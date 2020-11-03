@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.softwire.training.api.integration.helper.LoginHelper;
 import org.softwire.training.api.integration.helper.WebDriverHelper;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CreateLocationIT {
     public static final String TARGET_ADDRESS = System.getProperty("target.address");
@@ -46,7 +46,6 @@ public class CreateLocationIT {
         submitButton.click();
 
         wait.until(ExpectedConditions.urlToBe(TARGET_ADDRESS + "/#/admin/locations"));
-        WebElement entityAddButton = driver.findElement(By.className("entity-add-button"));
-        assertTrue(entityAddButton.getText().contains("Add locations"));
+        assertEquals(TARGET_ADDRESS + "/#/admin/locations", driver.getCurrentUrl());
     }
 }

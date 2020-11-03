@@ -63,7 +63,7 @@ export default class LocationForm extends React.Component {
                         </FormGroup>
                         <FormGroup>
                             <ControlLabel>Longitude</ControlLabel>
-                            <FormControl type='number' required
+                            <FormControl type='number'
                                 placeholder='Enter longitude (e.g. -106.69142)'
                                 value={this.state.longitude}
                                 onChange={this.onLongitudeChange}
@@ -73,7 +73,7 @@ export default class LocationForm extends React.Component {
                         </FormGroup>
                         <FormGroup>
                             <ControlLabel>Latitude</ControlLabel>
-                            <FormControl type='number' required
+                            <FormControl type='number'
                                 placeholder='Enter latitude (e.g. 19.48631)'
                                 value={this.state.latitude}
                                 onChange={this.onLatitudeChange}
@@ -127,8 +127,8 @@ export default class LocationForm extends React.Component {
             siteName: this.state.siteName,
             location: this.state.location,
             timeZone: this.state.timeZone,
-            longitude: this.state.longitude,
-            latitude: this.state.latitude,
+            longitude: this.state.longitude ? this.state.longitude : null,
+            latitude: this.state.latitude ? this.state.latitude : null,
             regionId: this.state.regionId ? this.state.regionId : null
         };
 

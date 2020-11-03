@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * Helper for logging in to the application
  */
 public class LoginHelper {
-    private static final String TEST_USER = "test_agent";
+    private static final String TEST_USER = "test_admin";
     private static final String TEST_PASSWORD = "password";
 
     public static void ensureLoggedIn(WebDriver driver) {

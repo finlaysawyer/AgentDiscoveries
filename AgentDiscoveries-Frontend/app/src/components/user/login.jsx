@@ -17,7 +17,6 @@ export default class Login extends React.Component {
         this.onPasswordChange = this.onPasswordChange.bind(this);
         this.handleLogIn = this.handleLogIn.bind(this);
     }
-
     render () {
         return (
             <div className='col-md-6 col-md-offset-3'>

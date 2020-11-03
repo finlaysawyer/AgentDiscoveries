@@ -56,7 +56,7 @@ export default class LocationForm extends React.Component {
                         </FormGroup>
                         <FormGroup>
                             <ControlLabel>Time Zone</ControlLabel>
-                            <FormControl type='number' required
+                            <FormControl type='text' required
                                 placeholder='Enter time zone (e.g. "Europe/London")'
                                 value={this.state.timeZone}
                                 onChange={this.onTimeZoneChange}/>

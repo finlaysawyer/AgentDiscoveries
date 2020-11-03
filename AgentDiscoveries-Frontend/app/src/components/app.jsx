@@ -7,7 +7,7 @@ import Page from './page';
 import Profile from './profile/profile';
 import EditProfilePicture from './profile/edit-profile-picture';
 import EditProfileCallSign from './profile/edit-profile-callsign';
-
+import Landing from './landing/landing-page';
 import LocationReportSearch from './search-forms/search-location-reports';
 import RegionSummarySearch from './search-forms/search-region-summaries';
 import LocationReportSubmit from './submit-forms/submit-location-report';
@@ -45,7 +45,7 @@ export default class App extends React.Component {
                         <Route path='/admin/users/edit/:id' render={props => <Page><UserForm id={props.match.params.id} /></Page>} />
 
                         <Route path='/message' render={() => <Page><TodaysCodePage /></Page>} />
-                        <Route path='/Landing' render={() => <Page><landing /></Page>} />
+                        <Route path='/landing' render={() => <Page><Landing /></Page>} />
                         <Route path='/profile' exact render={() => <Page><Profile /></Page>} />
                         <Route path='/profile/edit/callsign' render={() => <Page><EditProfileCallSign /></Page>} />
                         <Route path='/profile/edit/picture' render={() => <Page><EditProfilePicture /></Page>} />

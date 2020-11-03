@@ -45,6 +45,7 @@ export default class App extends React.Component {
                         <Route path='/admin/users/edit/:id' render={props => <Page><UserForm id={props.match.params.id} /></Page>} />
 
                         <Route path='/message' render={() => <Page><TodaysCodePage /></Page>} />
+                        <Route path='/Landing' render={() => <Page><landing /></Page>} />
                         <Route path='/profile' exact render={() => <Page><Profile /></Page>} />
                         <Route path='/profile/edit/callsign' render={() => <Page><EditProfileCallSign /></Page>} />
                         <Route path='/profile/edit/picture' render={() => <Page><EditProfilePicture /></Page>} />

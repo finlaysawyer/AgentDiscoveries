@@ -62,7 +62,7 @@ export default class LocationReportSubmit extends React.Component {
                             id="status-input"/>
                     </FormGroup>
                     <FormGroup>
-                        <ControlLabel>Report</ControlLabel>
+                        <ControlLabel>Report Title</ControlLabel>
                         <FormControl type='text' required
                             componentClass='textarea' rows={1}
                             placeholder='Enter report title'

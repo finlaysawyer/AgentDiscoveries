@@ -66,19 +66,25 @@ export default class LocationForm extends React.Component {
                         </FormGroup>
                         <FormGroup>
                             <ControlLabel>Longitude</ControlLabel>
-                            <FormControl type='number' required
+                            <FormControl type='number'
                                 placeholder='Enter longitude (e.g. -106.69142)'
                                 value={this.state.longitude}
                                 onChange={this.onLongitudeChange}
-                                id="longitude"/>
+                                id="longitude"
+                                step="any"
+                                min="-180"
+                                max="180"/>
                         </FormGroup>
                         <FormGroup>
                             <ControlLabel>Latitude</ControlLabel>
-                            <FormControl type='number' required
+                            <FormControl type='number'
                                 placeholder='Enter latitude (e.g. 19.48631)'
                                 value={this.state.latitude}
                                 onChange={this.onLatitudeChange}
-                                id="latitude"/>
+                                id="latitude"
+                                step="any"
+                                min="-90"
+                                max="90"/>
                         </FormGroup>
                         <FormGroup>
                             <ControlLabel>Region</ControlLabel>
@@ -127,8 +133,8 @@ export default class LocationForm extends React.Component {
             siteName: this.state.siteName,
             location: this.state.location,
             timeZone: this.state.timeZone,
-            longitude: this.state.longitude,
-            latitude: this.state.latitude,
+            longitude: this.state.longitude ? this.state.longitude : null,
+            latitude: this.state.latitude ? this.state.latitude : null,
             regionId: this.state.regionId ? this.state.regionId : null
         };
 

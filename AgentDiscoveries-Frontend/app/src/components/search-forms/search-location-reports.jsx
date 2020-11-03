@@ -13,6 +13,7 @@ export default class LocationReportsSearch extends React.Component {
         this.state = {
             callSign: '',
             locationId: '',
+            reportTitle: '',
             fromTime: '',
             toTime: '',
 
@@ -22,6 +23,7 @@ export default class LocationReportsSearch extends React.Component {
 
         this.onCallSignChange = this.onCallSignChange.bind(this);
         this.onLocationChange = this.onLocationChange.bind(this);
+        this.onReportTitle = this.onReportTitle.bind(this);
         this.onFromChange = this.onFromChange.bind(this);
         this.onToChange = this.onToChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -49,12 +51,18 @@ export default class LocationReportsSearch extends React.Component {
                             value={this.state.locationId}
                             onChange={this.onLocationChange}/>
                     </FormGroup>
+                    <FormGroup>
+                        <ControlLabel>Report Title</ControlLabel>
+                        <FormControl type='text'
+                            placeholder='Enter report title'
+                            value={this.state.reportTitle}
+                            onChange={this.reportTitle}/>
+                    </FormGroup>
                     <FormGroup className='form-inline'>
                         <ControlLabel className='rm-3'>From</ControlLabel>
                         <FormControl className='rm-3' type='date'
                             value={this.state.fromTime}
                             onChange={this.onFromChange}/>
-
                         <ControlLabel className='rm-3'>To</ControlLabel>
                         <FormControl className='rm-3' type='date'
                             value={this.state.toTime}
@@ -75,6 +83,10 @@ export default class LocationReportsSearch extends React.Component {
         this.setState({ locationId: parseInt(event.target.value) });
     }
 
+    onReportTitleChange(event) {
+        this.setState({ reportTitle: event.target.value });
+    }
+
     onFromChange(event) {
         this.setState({ fromTime: event.target.value });
     }
@@ -89,6 +101,7 @@ export default class LocationReportsSearch extends React.Component {
         const params = {
             callSign: this.state.callSign,
             locationId: this.state.locationId,
+            reportTitle: this.state.reportTitle,
             fromTime: this.state.fromTime && moment.utc(this.state.fromTime).startOf('day').toISOString(),
             toTime: this.state.toTime && moment.utc(this.state.toTime).endOf('day').toISOString()
         };

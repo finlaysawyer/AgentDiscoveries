@@ -7,6 +7,7 @@ public class ExternalReport {
 
     private String callSign;
     private String reportBody;
+    private String reportTitle;
 
     public ExternalReport(String callSign, String reportBody) {
         this.callSign = callSign;
@@ -19,6 +20,14 @@ public class ExternalReport {
 
     public void setAgentId(String callSign) {
         this.callSign = callSign;
+    }
+
+    public String getReportTitle() {
+        return reportTitle;
+    }
+
+    public void setReportTitle(String reportTitle) {
+        this.reportTitle=reportTitle;
     }
 
     public String getReportBody() {

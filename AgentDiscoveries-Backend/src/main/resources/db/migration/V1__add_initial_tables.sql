@@ -41,6 +41,7 @@ create table location_reports (
   agent_id int NOT NULL,
   status tinyint NOT NULL,
   report_time datetime NOT NULL,
+  report_title mediumtext NOT NULL,
   report_body mediumtext NOT NULL,
   FOREIGN KEY fk_reports_location_id (location_id) REFERENCES locations(location_id),
   FOREIGN KEY fk_reports_agent_id (agent_id) REFERENCES agents(agent_id)

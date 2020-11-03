@@ -51,7 +51,7 @@ export default class LocationReportsSearch extends React.Component {
                             value={this.state.locationId}
                             onChange={this.onLocationChange}/>
                     </FormGroup>
-                     <FormGroup>
+                    <FormGroup>
                         <ControlLabel>Report Title</ControlLabel>
                         <FormControl type='text'
                             placeholder='Enter report title'
@@ -63,7 +63,6 @@ export default class LocationReportsSearch extends React.Component {
                         <FormControl className='rm-3' type='date'
                             value={this.state.fromTime}
                             onChange={this.onFromChange}/>
-
                         <ControlLabel className='rm-3'>To</ControlLabel>
                         <FormControl className='rm-3' type='date'
                             value={this.state.toTime}

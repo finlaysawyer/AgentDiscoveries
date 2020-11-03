@@ -45,44 +45,50 @@ export default class LocationForm extends React.Component {
                             <FormControl type='text' required
                                 placeholder='Enter site name'
                                 value={this.state.siteName}
-                                onChange={this.onSiteChange}/>
+                                onChange={this.onSiteChange}
+                                id="site-name"/>
                         </FormGroup>
                         <FormGroup>
                             <ControlLabel>Location Name</ControlLabel>
                             <FormControl type='text' required
                                 placeholder='Enter location name'
                                 value={this.state.location}
-                                onChange={this.onLocationChange}/>
+                                onChange={this.onLocationChange}
+                                id="location-name"/>
                         </FormGroup>
                         <FormGroup>
                             <ControlLabel>Time Zone</ControlLabel>
                             <FormControl type='text' required
                                 placeholder='Enter time zone (e.g. "Europe/London")'
                                 value={this.state.timeZone}
-                                onChange={this.onTimeZoneChange}/>
+                                onChange={this.onTimeZoneChange}
+                                id="time-zone"/>
                         </FormGroup>
                         <FormGroup>
                             <ControlLabel>Longitude</ControlLabel>
                             <FormControl type='number' required
                                 placeholder='Enter longitude (e.g. -106.69142)'
                                 value={this.state.longitude}
-                                onChange={this.onLongitudeChange}/>
+                                onChange={this.onLongitudeChange}
+                                id="longitude"/>
                         </FormGroup>
                         <FormGroup>
                             <ControlLabel>Latitude</ControlLabel>
                             <FormControl type='number' required
                                 placeholder='Enter latitude (e.g. 19.48631)'
                                 value={this.state.latitude}
-                                onChange={this.onLatitudeChange}/>
+                                onChange={this.onLatitudeChange}
+                                id="latitude"/>
                         </FormGroup>
                         <FormGroup>
                             <ControlLabel>Region</ControlLabel>
                             <FormControl type='number'
                                 placeholder='Enter region ID (optional)'
                                 value={this.state.regionId}
-                                onChange={this.onRegionIdChange}/>
+                                onChange={this.onRegionIdChange}
+                                id="region-id"/>
                         </FormGroup>
-                        <Button type='submit'>Submit</Button>
+                        <Button type='submit' id='submit-location'>Submit</Button>
                     </Form>
                 </div>
             </div>

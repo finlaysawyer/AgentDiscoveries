@@ -11,20 +11,29 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * Helper for logging in to the application
  */
 public class LoginHelper {
-    private static final String TEST_USER = "test_agent";
+    private static final String TEST_AGENT = "test_agent";
+    private static final String TEST_ADMIN = "test_admin";
     private static final String TEST_PASSWORD = "password";
 
     public static void ensureLoggedIn(WebDriver driver) {
         try {
             driver.findElement(By.id("logout-link"));
         } catch (NoSuchElementException e) {
-            login(driver);
+            login(driver, TEST_AGENT);
         }
     }
 
-    public static void login(WebDriver driver) {
+    public static void ensureLoggedInAsAdmin(WebDriver driver) {
+        try {
+            driver.findElement(By.id("logout-link"));
+        } catch (NoSuchElementException e) {
+            login(driver, TEST_ADMIN);
+        }
+    }
+
+    public static void login(WebDriver driver, String userType) {
         WebElement userNameInput = driver.findElement(By.id("user-name-input"));
-        userNameInput.sendKeys(TEST_USER);
+        userNameInput.sendKeys(userType);
 
         WebElement passwordInput = driver.findElement(By.id("password-input"));
         passwordInput.sendKeys(TEST_PASSWORD);

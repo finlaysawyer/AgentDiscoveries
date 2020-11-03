@@ -23,7 +23,7 @@ export default class Entities extends React.Component {
             <div className='col-md-8 col-md-offset-2'>
                 <h3>{this.props.api}</h3>
                 <Link to={`/admin/${this.props.api}/add`}>
-                    <Button type='button'>
+                    <Button type='button' id='entity-add-button'>
                         {`Add ${this.props.api}`}
                     </Button>
                 </Link>

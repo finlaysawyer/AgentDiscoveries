@@ -9,6 +9,7 @@ import javax.persistence.Table;
 public class LocationStatusReport extends ReportBase {
 
     private int locationId;
+    private String reportTitle;
 
     @Column(name = "location_id", nullable = false)
     public int getLocationId() {
@@ -17,5 +18,14 @@ public class LocationStatusReport extends ReportBase {
 
     public void setLocationId(int locationId) {
         this.locationId = locationId;
+    }
+
+    @Column(name = "report_title", columnDefinition = "mediumtext", nullable = false)
+    public String getReportTitle() {
+        return reportTitle;
+    }
+
+    public void setReportTitle(String reportTitle) {
+        this.reportTitle = reportTitle;
     }
 }

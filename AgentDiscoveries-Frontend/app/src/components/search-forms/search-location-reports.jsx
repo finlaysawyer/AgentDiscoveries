@@ -23,7 +23,7 @@ export default class LocationReportsSearch extends React.Component {
 
         this.onCallSignChange = this.onCallSignChange.bind(this);
         this.onLocationChange = this.onLocationChange.bind(this);
-        this.onReportTitle = this.onReportTitle.bind(this);
+        this.onReportTitle = this.onReportTitleChange.bind(this);
         this.onFromChange = this.onFromChange.bind(this);
         this.onToChange = this.onToChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -56,7 +56,7 @@ export default class LocationReportsSearch extends React.Component {
                         <FormControl type='text'
                             placeholder='Enter report title'
                             value={this.state.reportTitle}
-                            onChange={this.reportTitle}/>
+                            onChange={this.onReportTitleChange}/>
                     </FormGroup>
                     <FormGroup className='form-inline'>
                         <ControlLabel className='rm-3'>From</ControlLabel>

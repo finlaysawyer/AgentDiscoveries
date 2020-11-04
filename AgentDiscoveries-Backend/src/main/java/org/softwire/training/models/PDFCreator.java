@@ -5,6 +5,7 @@ import org.apache.pdfbox.pdmodel.PDDocumentInformation;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import rst.pdfbox.layout.elements.Paragraph;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,6 +20,7 @@ public class PDFCreator {
     }
 
     public static void createDocument() throws IOException {
+        TableCreator tableCreator = new TableCreator();
 
         //create document
         PDDocument document = new PDDocument();
@@ -45,12 +47,15 @@ public class PDFCreator {
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
         document.addPage(page_1);
 
+
         contentStream.beginText();
         contentStream.setFont(PDType1Font.TIMES_ROMAN, 12);
         contentStream.newLineAtOffset(25, 500);
 
-        String text = "text";
-        contentStream.showText(text);
+        Paragraph paragraph = new Paragraph();
+        paragraph.add(tableCreator.tableCreator());
+
+
         contentStream.newLine();
         String text2 = "test";
         contentStream.showText(text2);
@@ -64,36 +69,3 @@ public class PDFCreator {
         document.close();
     }
 }
-
-
-
-
-//        Calendar calendar = new GregorianCalendar();
-//        Calendar  = calendar.getTime();
-//        date.set(now);
-//
-//        LocalDate now = LocalDate.now();
-//
-//        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-//        Calendar cal = Calendar.getInstance();
-//        pdd.setCreationDate(cal.getTime());
-
-//        setModificationDate(Calendar date);
-//        setKeywords(String keywords list);
-
-//        AccessPermission accessPermission = new AccessPermission();
-//        StandardProtectionPolicy spp = new StandardProtectionPolicy("1234", "1234", accessPermission);
-//        spp.setEncryptionKeyLength(128);
-//        spp.setPermissions(ap);
-//
-//        document.protect(spp);
-
-//        File file = new File("path of the document");
-//        PDDocument.load(file);
-
-//    int noOfPages = document.getNumberOfPages();
-//    System.out.print("noOfPages");
-//    PDImageXObject pdImage = PDImageXObject.createFromFile("C://");
-//    PDPageContentStream contents = new PDPageContentStream(doc, page);
-//    contents.drawImage(pdImage, 70, 250);
-//    contents.close();

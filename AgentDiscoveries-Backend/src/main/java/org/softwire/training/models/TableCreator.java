@@ -2,6 +2,7 @@ package org.softwire.training.models;
 import org.vandeseer.easytable.structure.Row;
 import org.vandeseer.easytable.structure.Table;
 import org.vandeseer.easytable.structure.cell.TextCell;
+import rst.pdfbox.layout.text.TextFragment;
 
 import java.awt.*;
 import java.io.IOException;
@@ -15,8 +16,19 @@ public class TableCreator {
 
     //NEED TO CONNECT TO THE SQL DATABASE
 
-    public void tableCreator() throws IOException {
-        Table.TableBuilder tableBuilder = Table.builder()
+    public TextFragment tableCreator() throws IOException {
+        ReportBase reportBase = new ReportBase();
+
+        String reportId = String.valueOf(reportBase.getReportId());
+        String locationId = String.valueOf(reportBase.getLocationId());
+        String agentId = String.valueOf(reportBase.getAgentId());
+        String status = String.valueOf(reportBase.getStatus());
+        String reportTime = String.valueOf(reportBase.getReportTime());
+        String reportTitle = String.valueOf(reportBase.getReportTitle());
+        String reportBody = String.valueOf(reportBase.getReportBody());
+
+
+        Table.TableBuilder table = Table.builder()
                 .addColumnsOfWidth(170, 170)
                 .fontSize(8)
                 .font(HELVETICA)
@@ -26,81 +38,82 @@ public class TableCreator {
                 .verticalAlignment(BOTTOM);
 
     //header -- CONTENT
-        tableBuilder.addRow(Row.builder()
-                .add(TextCell.builder().text("INSERT REPORT ID SQL CODE HERE")
+        table.addRow(Row.builder()
+                .add(TextCell.builder().text("Report ID:")
                         .lineSpacing(1.8f)
                         .padding(30)
                         .build())
-                .add(TextCell.builder().text("REPORT ID CONTENT")
+                .add(TextCell.builder().text(reportId)
                         .lineSpacing(0.6f)
                         .padding(10)
                         .build())
                 .build());
 
-        tableBuilder.addRow(Row.builder()
-                .add(TextCell.builder().text("INSERT LOCATION ID SQL CODE HERE")
+        table.addRow(Row.builder()
+                .add(TextCell.builder().text("Location ID:")
                         .lineSpacing(1.8f)
                         .padding(30)
                         .build())
-                .add(TextCell.builder().text("LOCATION ID CONTENT")
+                .add(TextCell.builder().text(locationId)
                         .lineSpacing(0.6f)
                         .padding(10)
                         .build())
                 .build());
 
-        tableBuilder.addRow(Row.builder()
-                .add(TextCell.builder().text("INSERT AGENT ID SQL CODE HERE")
+        table.addRow(Row.builder()
+                .add(TextCell.builder().text("Agent ID:")
                         .lineSpacing(1.8f)
                         .padding(30)
                         .build())
-                .add(TextCell.builder().text("AGENT ID CONTENT")
+                .add(TextCell.builder().text(agentId)
                         .lineSpacing(0.6f)
                         .padding(10)
                         .build())
                 .build());
 
-        tableBuilder.addRow(Row.builder()
-                .add(TextCell.builder().text("INSERT STATUS SQL CODE HERE")
+        table.addRow(Row.builder()
+                .add(TextCell.builder().text("Status code:")
                         .lineSpacing(1.8f)
                         .padding(30)
                         .build())
-                .add(TextCell.builder().text("REPORT ID CONTENT")
+                .add(TextCell.builder().text(status)
                         .lineSpacing(0.6f)
                         .padding(10)
                         .build())
                 .build());
 
-        tableBuilder.addRow(Row.builder()
-                .add(TextCell.builder().text("INSERT DATE SQL CODE HERE")
+        table.addRow(Row.builder()
+                .add(TextCell.builder().text("Report time:")
                         .lineSpacing(1.8f)
                         .padding(30)
                         .build())
-                .add(TextCell.builder().text("REPORT ID CONTENT")
+                .add(TextCell.builder().text(reportTime)
                         .lineSpacing(0.6f)
                         .padding(10)
                         .build())
                 .build());
 
-        tableBuilder.addRow(Row.builder()
-                .add(TextCell.builder().text("INSERT TITLE SQL CODE HERE")
+        table.addRow(Row.builder()
+                .add(TextCell.builder().text("Report title:")
                         .lineSpacing(1.8f)
                         .padding(30)
                         .build())
-                .add(TextCell.builder().text("REPORT ID CONTENT")
+                .add(TextCell.builder().text(reportTitle)
                         .lineSpacing(0.6f)
                         .padding(10)
                         .build())
                 .build());
 
-        tableBuilder.addRow(Row.builder()
-                .add(TextCell.builder().text("INSERT BODY SQL CODE HERE")
+        table.addRow(Row.builder()
+                .add(TextCell.builder().text("Report body:")
                         .lineSpacing(1.8f)
                         .padding(30)
                         .build())
-                .add(TextCell.builder().text("BODY CONTENT")
+                .add(TextCell.builder().text(reportBody)
                         .lineSpacing(0.6f)
                         .padding(10)
                         .build())
                 .build());
+        return (TextFragment) table;
     }
 }

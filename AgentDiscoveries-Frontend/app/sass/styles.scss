@@ -1,4 +1,4 @@
-$background-color: rgb(238, 238, 238);
+$background-color: rgb(78, 105, 120);
 $text-color: rgb(12, 12, 12);
 $overlay-color: rgb(247, 197, 89);
 
@@ -76,4 +76,17 @@ body {
 
 .profile-img-container:hover .overlay {
   opacity: 0.8;
+}
+
+.grid {
+width: 1000px;
+height: 200px;
+gird-gap: 10px;
+display: grid;
+grid-template-rows: repeat(3, 1fr);
+grid-template-columns: repeat(4, 3200px);
+
+div {
+background-color: blue;
+}
 }

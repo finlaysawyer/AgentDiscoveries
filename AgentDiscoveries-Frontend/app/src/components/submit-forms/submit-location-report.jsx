@@ -13,7 +13,7 @@ export default class LocationReportSubmit extends React.Component {
 
             locationId: '',
             status: '',
-            title: '',
+            reportTitle: '',
             reportBody: '',
             sendExternal: false,
 

@@ -10,9 +10,46 @@ import java.util.ArrayList;
 public class PDFBox {
 
     PDDocument document = new PDDocument();
+
+    PDPage my_page = new PDPage();
+    document.addPage(my_page);
+
+    int noOfPages= document.getNumberOfPages();
+    System.out.print(noOfPages);
+
+    PDImageXObject pdImage = PDImageXObject.createFromFile("C:
+    PDPageContentStream contents = new PDPageContentStream(doc, page);
+    contents.drawImage(pdImage, 70, 250);
+    contents.close();
+
+    PDDocumentInformation pdd = document.getDocumentInformation();
+
+    pdd.setAuthor(String author);
+        setTitle(String title);
+        setCreator(String creator);
+        setSubject(String subject);
+
+    Calendar date = new GregorianCalendar();
+    date.set(2015, 11, 5);
+    pdd.setCreationDate(date);
+
+    setModificationDate(Calendar date);
+    setKeywords(String keywords list);
+
+    AccessPermission accessPermission = new AccessPermission();
+    StandardProtectionPolicy spp = new StandardProtectionPolicy("1234","1234",accessPermission);
+    spp.setEncryptionKeyLength(128);
+    spp.setPermissions(ap);
+
+    document.protect(spp);
+
+
     document.save(".../downloads");
+    System.out.println("PDF created");
+    document.close();
 
-
+    File file = new File("path of the document")
+    PDDocument.load(file);
 
 
 

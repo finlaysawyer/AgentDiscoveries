@@ -10,7 +10,16 @@ import java.io.File;
 import java.io.IOException;
 
 public class PDFCreator {
-    public void createDocument() throws IOException {
+    public static void main(String args[]) {
+        try {
+            createDocument();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void createDocument() throws IOException {
+
         //create document
         PDDocument document = new PDDocument();
 
@@ -32,22 +41,24 @@ public class PDFCreator {
         document.addPage(page);
 
         //enter information on page 1
-        PDPage page_1 = document.getPage(1);
+        PDPage page_1 = document.getPage(0);
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
+        document.addPage(page_1);
 
         contentStream.beginText();
         contentStream.setFont(PDType1Font.TIMES_ROMAN, 12);
         contentStream.newLineAtOffset(25, 500);
 
-        String text = "test";
+        String text = "text";
         contentStream.showText(text);
         contentStream.newLine();
         String text2 = "test";
         contentStream.showText(text2);
 
         contentStream.endText();
+        contentStream.close();
 
-        document.save(new File(".../downloads/summary_report.pdf"));
+        document.save(new File("C:\\Users\\willr\\downloads\\summary_report.pdf"));
 
         System.out.println("PDF created");
         document.close();

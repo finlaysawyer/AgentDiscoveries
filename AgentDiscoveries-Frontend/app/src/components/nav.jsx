@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {MenuItem, Nav, Navbar, NavDropdown, NavItem} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import {clearUserInfo, isAdmin, isLoggedIn} from './utilities/user-helper';
+import {currentUserId, clearUserInfo, isAdmin, isLoggedIn} from './utilities/user-helper';
+import {apiGet} from './utilities/request-helper';
 import logo from '../../static/agent.png';
 
 export default class NavigationBar extends React.Component {
@@ -10,7 +11,8 @@ export default class NavigationBar extends React.Component {
 
         this.state = {
             isLoggedIn: isLoggedIn(),
-            isAdmin: isAdmin()
+            isAdmin: isAdmin(),
+            isAgent: false
         };
 
         this.onLoginEvent = this.onLoginEvent.bind(this);
@@ -25,11 +27,13 @@ export default class NavigationBar extends React.Component {
         window.removeEventListener('login', this.onLoginEvent);
     }
 
+
     onLoginEvent() {
         this.setState({
             isLoggedIn: isLoggedIn(),
-            isAdmin: isAdmin()
+            isAdmin: isAdmin(),
         });
+        this.getAgent();
     }
 
     render() {
@@ -62,7 +66,7 @@ export default class NavigationBar extends React.Component {
                     </NavItem>
                 </Nav>
                 {this.state.isAdmin ? this.renderAdminOptions() : null}
-                {!this.state.isAdmin ? this.renderAgentOptions() : null}
+                {this.state.isAgent ? this.renderAgentOptions() : null}
                 <Nav pullRight>
                     <NavItem componentClass={Link} href='/profile' to='/profile' eventKey={6}>
                         Profile
@@ -126,6 +130,19 @@ export default class NavigationBar extends React.Component {
                 </Nav>
             </Navbar.Collapse>
         );
+    }
+
+    getAgent() {
+        if (this.state.isLoggedIn) {
+            apiGet('users', currentUserId())
+                .then(user => {
+                    if (user.agentId) {
+                        return this.setState({ isAgent: true });
+                    } else {
+                        return this.setState({ isAgent: false });
+                    }
+                });
+        }
     }
 
     handleLogOut(event) {

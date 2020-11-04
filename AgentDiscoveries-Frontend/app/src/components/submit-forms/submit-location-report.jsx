@@ -13,7 +13,7 @@ export default class LocationReportSubmit extends React.Component {
 
             locationId: '',
             status: '',
-            title: '',
+            reportTitle: '',
             reportBody: '',
             sendExternal: false,
 
@@ -68,7 +68,8 @@ export default class LocationReportSubmit extends React.Component {
                             placeholder='Enter report title'
                             value={this.state.reportTitle}
                             onChange={this.onReportTitleChange}
-                            id="title-input"/>
+                            id="title-input"
+                            className="no-resize"/>
                     </FormGroup>
                     <FormGroup>
                         <ControlLabel>Report</ControlLabel>
@@ -77,7 +78,8 @@ export default class LocationReportSubmit extends React.Component {
                             placeholder='Write report'
                             value={this.state.reportBody}
                             onChange={this.onReportBodyChange}
-                            id="report-input"/>
+                            id="report-input"
+                            className="no-resize"/>
                     </FormGroup>
                     <FormGroup>
                         <Checkbox type='checkbox'

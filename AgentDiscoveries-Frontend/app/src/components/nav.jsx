@@ -137,10 +137,8 @@ export default class NavigationBar extends React.Component {
             apiGet('users', currentUserId())
                 .then(user => {
                     if (user.agentId) {
-                        //return true;
                         return this.setState({ isAgent: true });
                     } else {
-                        //return false;
                         return this.setState({ isAgent: false });
                     }
                 });

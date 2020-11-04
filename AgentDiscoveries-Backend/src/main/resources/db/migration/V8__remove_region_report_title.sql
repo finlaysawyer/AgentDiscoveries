@@ -1,0 +1,1 @@
+ALTER TABLE region_summary_reports DROP COLUMN report_title;

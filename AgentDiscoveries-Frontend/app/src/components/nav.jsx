@@ -12,7 +12,7 @@ export default class NavigationBar extends React.Component {
         this.state = {
             isLoggedIn: isLoggedIn(),
             isAdmin: isAdmin(),
-            isAgent: this.getAgent()
+            isAgent: false
         };
 
         this.onLoginEvent = this.onLoginEvent.bind(this);
@@ -21,19 +21,19 @@ export default class NavigationBar extends React.Component {
 
     componentDidMount() {
         window.addEventListener('login', this.onLoginEvent);
-        //this.getAgent()
     }
 
     componentWillUnmount() {
         window.removeEventListener('login', this.onLoginEvent);
     }
 
+
     onLoginEvent() {
         this.setState({
             isLoggedIn: isLoggedIn(),
             isAdmin: isAdmin(),
-            //isAgent: this.getAgent()
         });
+        this.getAgent();
     }
 
     render() {
@@ -133,7 +133,7 @@ export default class NavigationBar extends React.Component {
     }
 
     getAgent() {
-        if (isLoggedIn) {
+        if (this.state.isLoggedIn) {
             apiGet('users', currentUserId())
                 .then(user => {
                     if (user.agentId) {

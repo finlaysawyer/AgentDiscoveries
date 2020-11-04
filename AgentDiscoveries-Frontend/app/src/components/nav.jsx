@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 import {currentUserId, clearUserInfo, isAdmin, isLoggedIn} from './utilities/user-helper';
 import {apiGet} from './utilities/request-helper';
 import logo from '../../static/agent.png';
-import {errorLogAndRedirect} from './error';
 
 export default class NavigationBar extends React.Component {
     constructor(props) {
@@ -13,7 +12,7 @@ export default class NavigationBar extends React.Component {
         this.state = {
             isLoggedIn: isLoggedIn(),
             isAdmin: isAdmin(),
-            isAgent: false
+            isAgent: this.getAgent()
         };
 
         this.onLoginEvent = this.onLoginEvent.bind(this);
@@ -22,21 +21,18 @@ export default class NavigationBar extends React.Component {
 
     componentDidMount() {
         window.addEventListener('login', this.onLoginEvent);
+        //this.getAgent()
     }
 
     componentWillUnmount() {
         window.removeEventListener('login', this.onLoginEvent);
     }
 
-    componentWillMount() {
-        this.getAgent();
-    }
-
     onLoginEvent() {
         this.setState({
             isLoggedIn: isLoggedIn(),
             isAdmin: isAdmin(),
-            isAgent: this.getAgent()
+            //isAgent: this.getAgent()
         });
     }
 
@@ -137,14 +133,17 @@ export default class NavigationBar extends React.Component {
     }
 
     getAgent() {
-        if (this.isLoggedIn) {
+        if (isLoggedIn) {
             apiGet('users', currentUserId())
                 .then(user => {
                     if (user.agentId) {
-                        this.setState({ isAgent: true });
+                        //return true;
+                        return this.setState({ isAgent: true });
+                    } else {
+                        //return false;
+                        return this.setState({ isAgent: false });
                     }
-                })
-                .catch(errorLogAndRedirect);
+                });
         }
     }
 

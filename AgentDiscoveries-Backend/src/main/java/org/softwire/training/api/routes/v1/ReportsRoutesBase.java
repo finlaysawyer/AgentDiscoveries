@@ -1,5 +1,10 @@
 package org.softwire.training.api.routes.v1;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDDocumentInformation;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.softwire.training.api.core.JsonRequestUtils;
 import org.softwire.training.api.core.PermissionsVerifier;
 import org.softwire.training.api.models.ErrorCode;
@@ -9,10 +14,14 @@ import org.softwire.training.db.daos.ReportsDao;
 import org.softwire.training.db.daos.UsersDao;
 import org.softwire.training.db.daos.searchcriteria.ReportSearchCriterion;
 import org.softwire.training.models.ReportBase;
+import org.softwire.training.models.TableCreator;
+import rst.pdfbox.layout.elements.Paragraph;
 import spark.Request;
 import spark.Response;
 import spark.utils.StringUtils;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -82,6 +91,58 @@ public abstract class ReportsRoutesBase<T extends ReportApiModelBase, U extends 
         permissionsVerifier.verifyAdminPermission(req);
         return mapToApiModel(reportsDao.getReport(id)
                 .orElseThrow(() -> new FailedRequestException(ErrorCode.NOT_FOUND, "Report not found")));
+    }
+
+    public Object generateReportPDF(Request req, Response res, int id) throws IOException {
+        permissionsVerifier.verifyAdminPermission(req);
+
+        T mapped = mapToApiModel(reportsDao.getReport(id)
+                .orElseThrow(() -> new FailedRequestException(ErrorCode.NOT_FOUND, "Report not found")));
+
+        //create document
+        PDDocument document = new PDDocument();
+
+        //assign information
+        PDDocumentInformation pdd = document.getDocumentInformation();
+
+        String author = "Agent " + mapped.getAgentId();
+        String title = mapped.getReportTitle();
+        String subject = mapped.getReportTitle();
+
+        pdd.setAuthor(author);
+        pdd.setTitle(title);
+        pdd.setSubject(subject);
+
+        //create page
+        PDPage page = new PDPage();
+
+        //enter information on page 1
+        PDPageContentStream contentStream = new PDPageContentStream(document, page);
+        document.addPage(page);
+
+        contentStream.beginText();
+        contentStream.setFont(PDType1Font.TIMES_ROMAN, 12);
+        contentStream.newLineAtOffset(25, 500);
+
+        contentStream.newLine();
+        contentStream.showText(mapped.getReportTitle());
+        contentStream.showText(" | Status: " + mapped.getStatus());
+        contentStream.showText(" | Agent ID: " + mapped.getAgentId());
+        contentStream.endText();
+
+        contentStream.beginText();
+        contentStream.newLineAtOffset(25, 400);
+        contentStream.showText(mapped.getReportBody());
+        contentStream.endText();
+
+        contentStream.close();
+
+        document.save(new File("./summary.pdf"));
+
+        document.close();
+
+        res.status(204);
+        return new Object();
     }
 
     public Object deleteReport(Request req, Response res, int id) throws Exception {

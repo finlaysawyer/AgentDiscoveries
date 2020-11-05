@@ -7,10 +7,8 @@ import java.time.LocalDateTime;
 public class ReportBase {
 
     private int reportId;
-    private int locationId;
     private byte status;
     private LocalDateTime reportTime; // Always UTC in the DB
-    private String reportTitle;
     private String reportBody;
     private int agentId;
 
@@ -23,17 +21,6 @@ public class ReportBase {
 
     public void setReportId(int reportId) {
         this.reportId = reportId;
-    }
-
-    @Id
-    @Column(name = "location_id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int getLocationId() {
-        return locationId;
-    }
-
-    public void setLocationId(int locationId) {
-        this.locationId = locationId;
     }
 
     @Column(name = "status", nullable = false)
@@ -53,15 +40,6 @@ public class ReportBase {
 
     public void setReportTime(LocalDateTime reportTime) {
         this.reportTime = reportTime;
-    }
-
-    @Column(name = "report_title", columnDefinition = "mediumtext", nullable = false)
-    public String getReportTitle() {
-        return reportTitle;
-    }
-
-    public void setReportTitle(String reportTitle) {
-        this.reportTitle = reportTitle;
     }
 
     @Column(name = "report_body", columnDefinition = "mediumtext", nullable = false)

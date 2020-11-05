@@ -1,5 +1,7 @@
 import * as React from 'react';
-import {Panel} from 'react-bootstrap';
+import {Button, Panel} from 'react-bootstrap';
+import {apiGet} from '../utilities/request-helper';
+import {errorLogAndRedirect} from '../error';
 
 export default class SearchResult extends React.Component {
 
@@ -17,11 +19,19 @@ export default class SearchResult extends React.Component {
             return (
                 <Panel key={index}>
                     <Panel.Heading>Result</Panel.Heading>
-                    <Panel.Body>{this.renderResultBody(result)}</Panel.Body>
-                    <button type="button" onclick="exportToPdf()">Export to PDF</button>
+                    <Panel.Body>
+                        {this.renderResultBody(result)}
+                        <Button bsStyle="success" type="button" onClick={() => this.generatePdf(result[Object.keys(result)[0]])}>Export to PDF</Button>
+                    </Panel.Body>
                 </Panel>
             );
         });
+    }
+
+    generatePdf(id) {
+        apiGet('reports/locationstatuses/pdf', id)
+            .then(results => console.log(results))
+            .catch(errorLogAndRedirect);
     }
 
     renderResultBody(result) {

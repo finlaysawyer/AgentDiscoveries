@@ -87,10 +87,6 @@ grid-template-rows: repeat(3, 1fr);
 grid-template-columns: repeat(4, 3200px);
 }
 
-div {
-background-color: blue;
-}
-
 .no-resize {
   resize: none;
 }

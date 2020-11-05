@@ -20,11 +20,11 @@ public class TableCreator {
         ReportBase reportBase = new ReportBase();
 
         String reportId = String.valueOf(reportBase.getReportId());
-        String locationId = String.valueOf(reportBase.getLocationId());
+        //String locationId = String.valueOf(reportBase.getLocationId());
         String agentId = String.valueOf(reportBase.getAgentId());
         String status = String.valueOf(reportBase.getStatus());
         String reportTime = String.valueOf(reportBase.getReportTime());
-        String reportTitle = String.valueOf(reportBase.getReportTitle());
+        //String reportTitle = String.valueOf(reportBase.getReportTitle());
         String reportBody = String.valueOf(reportBase.getReportBody());
 
 
@@ -49,7 +49,7 @@ public class TableCreator {
                         .build())
                 .build());
 
-        table.addRow(Row.builder()
+        /*table.addRow(Row.builder()
                 .add(TextCell.builder().text("Location ID:")
                         .lineSpacing(1.8f)
                         .padding(30)
@@ -58,7 +58,7 @@ public class TableCreator {
                         .lineSpacing(0.6f)
                         .padding(10)
                         .build())
-                .build());
+                .build());*/
 
         table.addRow(Row.builder()
                 .add(TextCell.builder().text("Agent ID:")
@@ -93,7 +93,7 @@ public class TableCreator {
                         .build())
                 .build());
 
-        table.addRow(Row.builder()
+        /*table.addRow(Row.builder()
                 .add(TextCell.builder().text("Report title:")
                         .lineSpacing(1.8f)
                         .padding(30)
@@ -102,7 +102,7 @@ public class TableCreator {
                         .lineSpacing(0.6f)
                         .padding(10)
                         .build())
-                .build());
+                .build());*/
 
         table.addRow(Row.builder()
                 .add(TextCell.builder().text("Report body:")

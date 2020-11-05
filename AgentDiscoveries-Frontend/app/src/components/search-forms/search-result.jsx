@@ -8,6 +8,8 @@ export default class SearchResult extends React.Component {
                 {this.getResultsHeader(this.props.results)}
                 {this.renderResults(this.props.results)}
             </div>
+            <div className='View'>
+            <h1>
         );
     }
 

@@ -94,7 +94,7 @@ public class LocationStatusReportsRoutes extends ReportsRoutesBase<LocationStatu
         }
 
         if (!isNullOrEmpty(queryMap.get("reportTitle").value())) {
-            searchCriteria.add(new ReportTitleSearchCriterion(queryMap.get("locationId").value()));
+            searchCriteria.add(new ReportTitleSearchCriterion(queryMap.get("reportTitle").value()));
         }
 
         if (!isNullOrEmpty(queryMap.get("fromTime").value())) {

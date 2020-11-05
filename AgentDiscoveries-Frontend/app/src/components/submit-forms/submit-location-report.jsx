@@ -59,7 +59,9 @@ export default class LocationReportSubmit extends React.Component {
                             placeholder='Enter numeric status code'
                             value={this.state.status}
                             onChange={this.onStatusChange}
-                            id="status-input"/>
+                            id="status-input"
+                            min="0"
+                            max="100"/>
                     </FormGroup>
                     <FormGroup>
                         <ControlLabel>Report Title</ControlLabel>

@@ -14,35 +14,46 @@ export default class Landing extends React.Component {
     componentDidMount() {
         fetch(this.state.api + "Europe/London")
             .then(res => res.json())
-            .then(res => this.setState({ london: res.datetime}))
+            .then(res => this.setState({ london: res.datetime.slice(11, -16)}))
         fetch(this.state.api + "Europe/Paris")
             .then(res => res.json())
-            .then(res => this.setState({ paris: res.datetime}))
+            .then(res => this.setState({ paris: res.datetime.slice(11, -16)}))
         fetch(this.state.api + "Asia/Singapore")
             .then(res => res.json())
-            .then(res => this.setState({ london: res.datetime}))
+            .then(res => this.setState({ singapore: res.datetime.slice(11, -16)}))
     }
 
     render() {
         return (
-            <body>
-                <div>
-                    <h1> Welcome to Agent Discoveries</h1>
-                    <container>
-                        <img id="London" src={london} width= '320px' height= '200px' alt="London" />
-                        <p>{this.state.london}</p>
-                        <img id="Paris" src={paris} width= '320px' height= '200px' alt="Paris" />
-                        <p>{this.state.paris}</p>
-                        <img id="Singapore" src={singapore} width= '320px' height= '200px' alt="Singapore" />
-                        <img id="1" src={singapore} width= '320px' height= '200px' alt="Singapore" />
-                        <img id="2" src={singapore} width= '320px' height= '200px' alt="Singapore" />
-                        <img id="3" src={singapore} width= '320px' height= '200px' alt="Singapore" />
-                        <img id="4" src={singapore} width= '320px' height= '200px' alt="Singapore" />
-                        <img id="5" src={singapore} width= '320px' height= '200px' alt="Singapore" />
-                        <img id="6" src={singapore} width= '320px' height= '200px' alt="Singapore" />
-                    </container>
-                </div>
-            </body>
+            <div>
+                <h1> Welcome to Agent Discoveries</h1>
+                <container>
+                    <div className="container">
+                        <img src={london} width= '320px' height= '200px' className="imageLondon"  />
+                        <div className="middleLondon">
+                            <div className="text">London {this.state.london}</div>
+                        </div>
+                    </div>
+                    <div className="container">
+                        <img  src={paris} width= '320px' height= '200px' className="imageParis"  />
+                        <div className="middleParis">
+                            <div className="text">Paris {this.state.paris}</div>
+                        </div>
+                    </div>
+                    <div className="container">
+                        <img  src={singapore} width= '320px' height= '200px' className="imageSG"  />
+                        <div className="middleSG">
+                            <div className="text">Singapore {this.state.singapore}</div>
+                        </div>
+                    </div>
+                    <img id="1" src={singapore} width= '320px' height= '200px' alt="Singapore" />
+                    <img id="2" src={singapore} width= '320px' height= '200px' alt="Singapore" />
+                    <img id="3" src={singapore} width= '320px' height= '200px' alt="Singapore" />
+                    <img id="4" src={singapore} width= '320px' height= '200px' alt="Singapore" />
+                    <img id="5" src={singapore} width= '320px' height= '200px' alt="Singapore" />
+                    <img id="6" src={singapore} width= '320px' height= '200px' alt="Singapore" />
+                </container>
+            </div>
         );
     }    
 }

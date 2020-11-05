@@ -9,18 +9,18 @@ export default class Landing extends React.Component {
         this.state = {
             api: 'http://worldtimeapi.org/api/timezone/'
         };
-      }
+    }
 
     componentDidMount() {
-        fetch(this.state.api + "Europe/London")
+        fetch(this.state.api + 'Europe/London')
             .then(res => res.json())
-            .then(res => this.setState({ london: res.datetime.slice(11, -16)}))
-        fetch(this.state.api + "Europe/Paris")
+            .then(res => this.setState({ london: res.datetime.slice(11, -16)}));
+        fetch(this.state.api + 'Europe/Paris')
             .then(res => res.json())
-            .then(res => this.setState({ paris: res.datetime.slice(11, -16)}))
-        fetch(this.state.api + "Asia/Singapore")
+            .then(res => this.setState({ paris: res.datetime.slice(11, -16)}));
+        fetch(this.state.api + 'Asia/Singapore')
             .then(res => res.json())
-            .then(res => this.setState({ singapore: res.datetime.slice(11, -16)}))
+            .then(res => this.setState({ singapore: res.datetime.slice(11, -16)}));
     }
 
     render() {

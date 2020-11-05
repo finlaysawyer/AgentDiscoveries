@@ -14,7 +14,7 @@ public final class ReportTitleSearchCriterion extends ReportSearchCriterion {
 
     @Override
     public String getSqlForWhereClause() {
-        return "report_title = :" + REPORT_TITLE_BINDING_NAME;
+        return "report_title LIKE :" + REPORT_TITLE_BINDING_NAME;
     }
 
     @Override

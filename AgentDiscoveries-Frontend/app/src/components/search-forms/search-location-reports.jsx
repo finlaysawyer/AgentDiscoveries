@@ -101,7 +101,7 @@ export default class LocationReportsSearch extends React.Component {
         const params = {
             callSign: this.state.callSign,
             locationId: this.state.locationId,
-            reportTitle: this.state.reportTitle,
+            reportTitle: this.state.reportTitle + '%',
             fromTime: this.state.fromTime && moment.utc(this.state.fromTime).startOf('day').toISOString(),
             toTime: this.state.toTime && moment.utc(this.state.toTime).endOf('day').toISOString()
         };

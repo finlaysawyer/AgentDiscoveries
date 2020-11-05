@@ -1,7 +1,7 @@
 import * as React from 'react';
-import london from 'D:\\BP\\CodeBootCamp\\RepoStore\\AgentDiscoveries\\AgentDiscoveries-Frontend\\app\\images\\london.jpg';
-import paris from 'D:\\BP\\CodeBootCamp\\RepoStore\\AgentDiscoveries\\AgentDiscoveries-Frontend\\app\\images\\paris.jpg';
-import singapore from 'D:\\BP\\CodeBootCamp\\RepoStore\\AgentDiscoveries\\AgentDiscoveries-Frontend\\app\\images\\Singapore.jpg';
+import london from '../../../images/london.jpg';
+import paris from '../../../images/paris.jpg';
+import singapore from '../../../images/Singapore.jpg';
 
 export default class Landing extends React.Component {
 

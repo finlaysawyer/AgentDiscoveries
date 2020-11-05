@@ -2,14 +2,13 @@ import * as React from 'react';
 import {Panel} from 'react-bootstrap';
 
 export default class SearchResult extends React.Component {
+
     render() {
         return (
             <div className='results'>
                 {this.getResultsHeader(this.props.results)}
                 {this.renderResults(this.props.results)}
             </div>
-            <div className='View'>
-            <h1>
         );
     }
 
@@ -19,6 +18,7 @@ export default class SearchResult extends React.Component {
                 <Panel key={index}>
                     <Panel.Heading>Result</Panel.Heading>
                     <Panel.Body>{this.renderResultBody(result)}</Panel.Body>
+                    <button type="button" onclick="exportToPdf()">Export to PDF</button>
                 </Panel>
             );
         });

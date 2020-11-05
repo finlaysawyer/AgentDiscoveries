@@ -11,8 +11,24 @@ export default class Landing extends React.Component {
                 <div>
                     <h1> Welcome to Agent Discoveries </h1>
                     <container>
-                        <img id="London" src={london} width= '320px' height= '200px' alt="London" />
-                        <img id="Paris" src={paris} width= '320px' height= '200px' alt="Paris" />
+                    <div class="container">
+                            <img src={london} width= '320px' height= '200px' class="imageLondon"  />
+                            <div class="middleLondon">
+                            <div class="text">London</div>
+                                    </div>
+                                    </div>
+                    <div class="container">
+                            <img  src={paris} width= '320px' height= '200px' class="imageParis"  />
+                            <div class="middleParis">
+                            <div class="text">Paris</div>
+                                    </div>
+                                    </div>
+                                    <div class="container">
+                            <img  src={singapore} width= '320px' height= '200px' class="imageSG"  />
+                            <div class="middleSG">
+                            <div class="text">Singapore</div>
+                                    </div>
+                                    </div>
                         <img id="Singapore" src={singapore} width= '320px' height= '200px' alt="Singapore" />
                         <img id="1" src={singapore} width= '320px' height= '200px' alt="Singapore" />
                         <img id="2" src={singapore} width= '320px' height= '200px' alt="Singapore" />

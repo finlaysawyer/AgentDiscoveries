@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.softwire.training.api.integration.helper.LoginHelper;
 import org.softwire.training.api.integration.helper.WebDriverHelper;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SubmitReportsIT {
@@ -65,5 +66,26 @@ public class SubmitReportsIT {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("alert-info")));
         WebElement alert = driver.findElement(By.className("alert-info"));
         assertTrue(alert.getText().contains("Report submitted"));
+    }
+
+    @Test
+    public void testCannotSubmitLocationReportWithInvalidStatus() {
+        driver.get(TARGET_ADDRESS);
+        LoginHelper.ensureLoggedIn(driver);
+        driver.get(TARGET_ADDRESS + "/#/submit/location");
+
+        WebElement locationSelect = driver.findElement(By.id("location-select"));
+        new Select(locationSelect).selectByIndex(1);
+        WebElement statusInput = driver.findElement(By.id("status-input"));
+        statusInput.sendKeys("1000"); // invalid
+        WebElement reportTitleInput = driver.findElement(By.id("title-input"));
+        reportTitleInput.sendKeys("A test report title");
+        WebElement reportInput = driver.findElement(By.id("report-input"));
+        reportInput.sendKeys("A test report");
+        WebElement submitButton = driver.findElement(By.id("submit-report"));
+        submitButton.click();
+
+        WebElement htmlError = driver.findElement(By.cssSelector("input:invalid"));
+        assertTrue(htmlError.isDisplayed());
     }
 }

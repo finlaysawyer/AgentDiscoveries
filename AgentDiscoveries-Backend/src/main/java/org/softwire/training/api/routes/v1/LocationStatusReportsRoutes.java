@@ -40,6 +40,10 @@ public class LocationStatusReportsRoutes extends ReportsRoutesBase<LocationStatu
 
     @Override
     protected LocationStatusReport validateThenMap(LocationStatusReportApiModel apiModel) {
+        if (apiModel.getStatus() > 100 || apiModel.getStatus() < 0) {
+            throw new FailedRequestException(ErrorCode.INVALID_INPUT, "Location status must be between 0 and 100");
+        }
+
         // Ignore any supplied report time
         LocalDateTime reportTimeUtc = LocalDateTime.now(ZoneOffset.UTC);
 

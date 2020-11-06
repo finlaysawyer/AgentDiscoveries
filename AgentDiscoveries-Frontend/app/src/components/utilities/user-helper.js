@@ -8,6 +8,10 @@ export function storeUserInfo(userInfo) {
     updateListeners();
 }
 
+export function storeUserName(userName) {
+    window.localStorage.setItem('UserName',userName);
+}
+
 export function clearUserInfo() {
     window.localStorage.clear('Token');
     window.localStorage.clear('UserId');

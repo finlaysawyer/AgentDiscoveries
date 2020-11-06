@@ -5,6 +5,7 @@ $overlay-color: rgb(247, 197, 89);
 body {
   background-color: $background-color;
   color: $text-color;
+  font-family: 'Roboto', sans-serif;
 }
 
 .agent-discoveries-logo {
@@ -121,7 +122,8 @@ img {}
   top: 17.8%;
   left: 28.6%;
   transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%)
+  -ms-transform: translate(-50%, -50%);
+  padding-top: 5%;
 }
 .middleLondontime {
   transition: .5s ease;
@@ -130,7 +132,7 @@ img {}
   top: 27%;
   left: 28.6%;
   transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%)
+  -ms-transform: translate(-50%, -50%);
 }
 .middleParistext {
   transition: .5s ease;
@@ -139,7 +141,8 @@ img {}
   top: 17.8%;
   left: 49.1%;
   transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%)
+  -ms-transform: translate(-50%, -50%);
+  padding-top: 5%;
 }
 .middleParistime {
   transition: .5s ease;
@@ -157,7 +160,8 @@ img {}
   top: 17.8%;
   left: 68.9%;
   transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%)
+  -ms-transform: translate(-50%, -50%);
+  padding-top: 5%;
 }
 .middleSGtime {
   transition: .5s ease;
@@ -175,7 +179,8 @@ img {}
   top: 42%;
   left: 28.6%;
   transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%)
+  -ms-transform: translate(-50%, -50%);
+  padding-top: 4%;
 }
 .middleBerlintime {
   transition: .5s ease;
@@ -193,7 +198,8 @@ img {}
   top: 42%;
   left: 49.1%;
   transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%)
+  -ms-transform: translate(-50%, -50%);
+  padding-top: 4%;
 }
 .middleMadridtime{
   transition: .5s ease;
@@ -211,7 +217,8 @@ img {}
   top: 42%;
   left: 68.9%;
   transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%)
+  -ms-transform: translate(-50%, -50%);
+  padding-top: 4%;
 }
 .middleStockholmtime{
   transition: .5s ease;
@@ -229,7 +236,8 @@ img {}
   top: 65%;
   left: 28.6%;
   transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%)
+  -ms-transform: translate(-50%, -50%);
+  padding-top: 4%;
 }
 .middleMoscowtime{
   transition: .5s ease;
@@ -247,7 +255,8 @@ img {}
   top: 65%;
   left: 49.1%;
   transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%)
+  -ms-transform: translate(-50%, -50%);
+  padding-top: 4%;
 }
 .middleWashingtonDCtime {
   transition: .5s ease;
@@ -265,7 +274,8 @@ img {}
   top: 65%;
   left: 68.9%;
   transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%)
+  -ms-transform: translate(-50%, -50%);
+  padding-top: 4%;
 }
 .middleShanghaitime {
   transition: .5s ease;
@@ -274,7 +284,7 @@ img {}
   top: 73%;
   left: 68.9%;
   transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%)
+  -ms-transform: translate(-50%, -50%);
 }
 
 .text {

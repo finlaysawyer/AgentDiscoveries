@@ -42,12 +42,17 @@ public class SearchReportsIT {
         WebElement submitButton = driver.findElement(By.id("submit-report"));
         submitButton.click();
 
+        LoginHelper.logOut(driver);
+        LoginHelper.ensureLoggedInAsAdmin(driver);
+
         driver.get(TARGET_ADDRESS + "/#/search/location");
 
-        WebElement reportTitle = driver.findElement(By.id("title-input"));
+        WebElement reportTitle = driver.findElement(By.id("title-search"));
         reportTitle.sendKeys("test");
+        WebElement searchButton = driver.findElement(By.id("search-report"));
+        searchButton.click();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("alert-info")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("resultsBox")));
         WebElement alert = driver.findElement(By.className("results"));
         assertTrue(alert.getText().contains("results"));
     }

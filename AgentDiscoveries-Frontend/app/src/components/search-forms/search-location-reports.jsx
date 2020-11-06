@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {Button, ControlLabel, Form, FormControl, FormGroup} from 'react-bootstrap';
 import QueryString from 'query-string';
 import moment from 'moment';
 import Message from '../message';
 import SearchResult from './search-result';
+import {Button, ControlLabel, Form, FormControl, FormGroup} from 'react-bootstrap';
 import {apiGet} from '../utilities/request-helper';
 
 export default class LocationReportsSearch extends React.Component {
@@ -56,7 +56,8 @@ export default class LocationReportsSearch extends React.Component {
                         <FormControl type='text'
                             placeholder='Enter report title'
                             value={this.state.reportTitle}
-                            onChange={this.onReportTitleChange}/>
+                            onChange={this.onReportTitleChange}
+                            id="title-search"/>
                     </FormGroup>
                     <FormGroup className='form-inline'>
                         <ControlLabel className='rm-3'>From</ControlLabel>
@@ -68,7 +69,7 @@ export default class LocationReportsSearch extends React.Component {
                             value={this.state.toTime}
                             onChange={this.onToChange}/>
                     </FormGroup>
-                    <Button type='submit'>Search</Button>
+                    <Button type='submit' id="search-report">Search</Button>
                 </Form>
                 <SearchResult results={this.state.results} />
             </div>

@@ -14,7 +14,7 @@ export default class SearchResult extends React.Component {
     renderResults(results) {
         return results.map((result, index) => {
             return (
-                <Panel key={index}>
+                <Panel id="resultsBox" key={index}>
                     <Panel.Heading>Result</Panel.Heading>
                     <Panel.Body>{this.renderResultBody(result)}</Panel.Body>
                 </Panel>

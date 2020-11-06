@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {Button, ControlLabel, Form, FormControl, FormGroup} from 'react-bootstrap';
 import QueryString from 'query-string';
 import moment from 'moment';
 import Message from '../message';
 import SearchResult from './search-result';
+import {Button, ControlLabel, Form, FormControl, FormGroup} from 'react-bootstrap';
 import {apiGet} from '../utilities/request-helper';
 
 export default class LocationReportsSearch extends React.Component {
@@ -23,7 +23,7 @@ export default class LocationReportsSearch extends React.Component {
 
         this.onCallSignChange = this.onCallSignChange.bind(this);
         this.onLocationChange = this.onLocationChange.bind(this);
-        this.onReportTitle = this.onReportTitleChange.bind(this);
+        this.onReportTitleChange = this.onReportTitleChange.bind(this);
         this.onFromChange = this.onFromChange.bind(this);
         this.onToChange = this.onToChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -56,7 +56,8 @@ export default class LocationReportsSearch extends React.Component {
                         <FormControl type='text'
                             placeholder='Enter report title'
                             value={this.state.reportTitle}
-                            onChange={this.onReportTitleChange}/>
+                            onChange={this.onReportTitleChange}
+                            id="title-search"/>
                     </FormGroup>
                     <FormGroup className='form-inline'>
                         <ControlLabel className='rm-3'>From</ControlLabel>
@@ -68,7 +69,7 @@ export default class LocationReportsSearch extends React.Component {
                             value={this.state.toTime}
                             onChange={this.onToChange}/>
                     </FormGroup>
-                    <Button type='submit'>Search</Button>
+                    <Button type='submit' id="search-report">Search</Button>
                 </Form>
                 <SearchResult results={this.state.results} />
             </div>
@@ -101,7 +102,7 @@ export default class LocationReportsSearch extends React.Component {
         const params = {
             callSign: this.state.callSign,
             locationId: this.state.locationId,
-            reportTitle: this.state.reportTitle,
+            reportTitle: this.state.reportTitle + '%',
             fromTime: this.state.fromTime && moment.utc(this.state.fromTime).startOf('day').toISOString(),
             toTime: this.state.toTime && moment.utc(this.state.toTime).endOf('day').toISOString()
         };

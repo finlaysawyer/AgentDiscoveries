@@ -22,7 +22,6 @@ class ReportsDaoUtils {
                 stringBuilder.append(" AND (");
                 stringBuilder.append(criterion.getSqlForWhereClause());
                 stringBuilder.append(')');
-
             }
 
             return stringBuilder.toString();

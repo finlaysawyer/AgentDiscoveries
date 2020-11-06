@@ -68,87 +68,87 @@ export default class Landing extends React.Component {
                 <h1> {greeting} <span>{getUser()}</span> welcome to Agent Discoveries</h1>
                 <container>
                     <div className="container1">
-                        <img src={london} width= '320px' height= '200px' className="imageLondon"  />
-                        <div className="middleLondontext">
+                        <img src={london} width= '320px' height= '200px' className="location-image"  />
+                        <div className="middleLondontext location-show-text">
                             <div className="text">London</div>
                         </div>
-                        <div className="middleLondontime">
+                        <div className="middleLondontime location-show-text">
                             <div className="time">{this.state.london}</div>
                         </div>
 
                     </div>
                     <div className="container1">
-                        <img  src={paris} width= '320px' height= '200px' className="imageParis"  />
-                        <div className="middleParistext">
+                        <img  src={paris} width= '320px' height= '200px' className="location-image"  />
+                        <div className="middleParistext location-show-text">
                             <div className="text">Paris</div>
                         </div>
-                        <div className="middleParistime">
+                        <div className="middleParistime location-show-text">
                             <div className="time">{this.state.paris}</div>
                         </div>
 
                     </div>
                     <div className="container1">
-                        <img  src={singapore} width= '320px' height= '200px' className="imageSG"  />
-                        <div className="middleSGtext">
+                        <img  src={singapore} width= '320px' height= '200px' className="location-image"  />
+                        <div className="middleSGtext location-show-text">
                             <div className="text">Singapore</div>
                         </div>
-                        <div className="middleSGtime">
+                        <div className="middleSGtime location-show-text">
                             <div className="time">{this.state.singapore}</div>
                         </div>
 
                     </div>
                     <div className="container1">
-                        <img  src={berlin} width= '320px' height= '200px' className="imageBerlin"  />
-                        <div className="middleBerlintext">
+                        <img  src={berlin} width= '320px' height= '200px' className="location-image"  />
+                        <div className="middleBerlintext location-show-text">
                             <div className="text">Berlin</div>
                         </div>
-                        <div className="middleBerlintime">
+                        <div className="middleBerlintime location-show-text">
                             <div className="time">{this.state.berlin}</div>
                         </div>
                     </div>
                     <div className="container1">
-                        <img  src={madrid} width= '320px' height= '200px' className="imageMadrid"  />
-                        <div className="middleMadridtext">
+                        <img  src={madrid} width= '320px' height= '200px' className="location-image"  />
+                        <div className="middleMadridtext location-show-text">
                             <div className="text">Madrid</div>
                         </div>
-                        <div className="middleMadridtime">
+                        <div className="middleMadridtime location-show-text">
                             <div className="time">{this.state.madrid}</div>
                         </div>
                     </div>
                     <div className="container1">
-                        <img  src={stockholm} width= '320px' height= '200px' className="imageStockholm"  />
-                        <div className="middleStockholmtext">
+                        <img  src={stockholm} width= '320px' height= '200px' className="location-image"  />
+                        <div className="middleStockholmtext location-show-text">
                             <div className="text">Stockholm</div>
                         </div>
-                        <div className="middleStockholmtime">
+                        <div className="middleStockholmtime location-show-text">
                             <div className="time">{this.state.stockholm}</div>
                         </div>
                     </div>
                     <div className="container1">
-                        <img  src={moscow} width= '320px' height= '200px' className="imageMoscow"  />
-                        <div className="middleMoscowtext">
+                        <img  src={moscow} width= '320px' height= '200px' className="location-image"  />
+                        <div className="middleMoscowtext location-show-text">
                             <div className="text">Moscow</div>
                         </div>
-                        <div className="middleMoscowtime">
+                        <div className="middleMoscowtime location-show-text">
                             <div className="time">{this.state.moscow}</div>
                         </div>
                     </div>
                     <div className="container1">
-                        <img  src={washingtonDC} width= '320px' height= '200px' className="imageWashingtonDC"  />
-                        <div className="middleWashingtonDCtext">
+                        <img  src={washingtonDC} width= '320px' height= '200px' className="location-image"  />
+                        <div className="middleWashingtonDCtext location-show-text">
                             <div className="text">Washington DC</div>
                         </div>
-                        <div className="middleWashingtonDCtime">
+                        <div className="middleWashingtonDCtime location-show-text">
                             <div className="time">{this.state.washingtonDC}
                             </div>
                         </div>
                     </div>
                     <div className="container1">
-                        <img  src={shanghai} width= '320px' height= '200px' className="imageShanghai"  />
-                        <div className="middleShanghaitext">
+                        <img  src={shanghai} width= '320px' height= '200px' className="location-image"  />
+                        <div className="middleShanghaitext location-show-text">
                             <div className="text">Shanghai</div>
                         </div>
-                        <div className="middleShanghaitime">
+                        <div className="middleShanghaitime location-show-text">
                             <div className="time">{this.state.shanghai}</div>
                         </div>
                     </div>

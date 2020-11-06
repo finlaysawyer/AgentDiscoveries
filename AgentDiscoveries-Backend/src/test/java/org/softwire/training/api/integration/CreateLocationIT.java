@@ -29,7 +29,7 @@ public class CreateLocationIT {
     @Test
     public void testCanSubmitLocation() {
         driver.get(TARGET_ADDRESS);
-        LoginHelper.ensureLoggedIn(driver);
+        LoginHelper.ensureLoggedInAsAdmin(driver);
         driver.get(TARGET_ADDRESS + "/#/admin/locations/add");
 
         WebElement siteNameInput = driver.findElement(By.id("site-name"));

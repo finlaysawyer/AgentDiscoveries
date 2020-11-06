@@ -8,10 +8,19 @@ export function storeUserInfo(userInfo) {
     updateListeners();
 }
 
+export function storeUserName(userName) {
+    window.localStorage.setItem('UserName',userName);
+}
+
+export function getUserName(){
+    return window.localStorage.getItem('UserName');
+}
+
 export function clearUserInfo() {
     window.localStorage.clear('Token');
     window.localStorage.clear('UserId');
     window.localStorage.clear('Admin');
+    window.localStorage.clear('UserName');
 
     updateListeners();
 }

@@ -1,5 +1,5 @@
-$background-color: rgb(238, 238, 238);
-$text-color: rgb(12, 12, 12);
+$background-color: rgb(234, 255, 255);
+$text-color: rgb(86, 84, 92);
 $overlay-color: rgb(247, 197, 89);
 
 body {
@@ -78,6 +78,328 @@ body {
   opacity: 0.8;
 }
 
+container {
+display: grid;
+grid-gap: 20px;
+grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+grid-template-rows: 1fr;
+}
+
+
+img {}
 .no-resize {
   resize: none;
 }
+
+.imageLondon {
+  opacity: 1;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+.imageParis {
+  opacity: 1;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+.imageSG {
+  opacity: 1;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+.imageBerlin {
+  opacity: 1;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+.imageMadrid {
+  opacity: 1;
+  transition: .5s ease;
+  backface-visibility: hidden;
+
+}
+.imageMoscow {
+  opacity: 1;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+.imageWashingtonDC{
+  opacity: 1;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+.imageShanghai {
+  opacity: 1;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+.imageStockholm {
+  opacity: 1;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middleLondontext {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 17.8%;
+  left: 28.6%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.middleLondontime {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 27%;
+  left: 28.6%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.middleParistext {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 17.8%;
+  left: 49.1%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.middleParistime {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 27%;
+  left: 49.1%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.middleSGtext {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 17.8%;
+  left: 68.9%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.middleSGtime {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 27%;
+  left: 68.9%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.middleBerlintext {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 42%;
+  left: 28.6%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.middleBerlintime {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 28.6%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.middleMadridtext{
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 42%;
+  left: 49.1%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.middleMadridtime{
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 49.1%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.middleStockholmtext{
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 42%;
+  left: 68.9%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.middleStockholmtime{
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left:68.9%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.middleMoscowtext {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 65%;
+  left: 28.6%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.middleMoscowtime{
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 73%;
+  left: 28.6%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.middleWashingtonDCtext {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 65%;
+  left: 49.1%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.middleWashingtonDCtime {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 73%;
+  left: 49.1%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.middleShanghaitext {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 65%;
+  left: 68.9%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.middleShanghaitime {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 73%;
+  left: 68.9%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+
+
+
+.container1:hover .imageLondon {
+  opacity: 0.3;
+}
+.container1:hover .imageParis {
+  opacity: 0.3;
+}
+.container1:hover .imageSG {
+  opacity: 0.3;
+}
+.container1:hover .imageBerlin {
+  opacity: 0.3;
+}
+.container1:hover .imageMadrid {
+  opacity: 0.3;
+}
+.container1:hover .imageStockholm {
+  opacity: 0.3;
+}
+.container1:hover .imageMoscow {
+  opacity: 0.3;
+}
+.container1:hover .imageWashingtonDC {
+  opacity: 0.3;
+}
+.container1:hover .imageShanghai {
+  opacity: 0.3;
+}
+
+.container1:hover .middleLondontext{
+  opacity: 1;
+}
+.container1:hover .middleLondontime{
+  opacity: 1;
+}
+.container1:hover .middleParistext{
+  opacity: 1;
+}
+.container1:hover .middleParistime{
+  opacity: 1;
+}
+.container1:hover .middleSGtext{
+  opacity: 1;
+}
+.container1:hover .middleSGtime{
+  opacity: 1;
+}
+.container1:hover .middleBerlintext{
+  opacity: 1;
+}
+.container1:hover .middleBerlintime{
+  opacity: 1;
+}
+
+.container1:hover .middleMadridtext{
+  opacity: 1;
+}
+.container1:hover .middleMadridtime{
+  opacity: 1;
+}
+.container1:hover .middleStockholmtext{
+  opacity: 1;
+}
+.container1:hover .middleStockholmtime{
+  opacity: 1;
+}
+.container1:hover .middleMoscowtext{
+  opacity: 1;
+}
+.container1:hover .middleMoscowtime{
+  opacity: 1;
+}
+.container1:hover .middleWashingtonDCtext{
+  opacity: 1;
+}
+.container1:hover .middleWashingtonDCtime{
+  opacity: 1;
+}
+.container1:hover .middleShanghaitext{
+  opacity: 1;
+}
+.container1:hover .middleShanghaitime{
+  opacity: 1;
+}
+
+
+.text {
+  
+  color: black;
+  font-size: 34px;
+  font-family: monaco, Consolas, "Lucida Console", monospace; font-size: 34px;
+  padding: 16px 32px;
+}
+.time {
+  
+  color: black;
+  font-size: 34px;
+  font-family: monaco, Consolas, "Lucida Console", monospace; font-size: 34px;
+  padding: 16px 32px;
+}
+

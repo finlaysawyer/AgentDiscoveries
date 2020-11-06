@@ -8,6 +8,7 @@ import stockholm from '../../../images/Stockholm.jpg';
 import washingtonDC from '../../../images/WashingtonDC.jpg';
 import moscow from '../../../images/Moscow.jpg';
 import shanghai from '../../../images/Shanghai.jpg';
+import * as UserHelper from '../utilities/user-helper';
 
 export default class Landing extends React.Component {
     constructor(props) {
@@ -48,10 +49,23 @@ export default class Landing extends React.Component {
     }
 
     render() {
+        function getUser(){
+            return UserHelper.getUserName();
+        }
+        let greeting;
+        const date = new Date();
+        const currentTime = date.getHours();
+        if (currentTime<12){
+            greeting='Good Morning,';
+        }else if(currentTime<18){
+            greeting='Good Afternoon,';
+        }else{
+            greeting='Good Night,';
+        }
         return (
 
             <div>
-                <h1> Hello </h1>
+                <h1> {greeting} <span>{getUser()}</span> welcome to Agent Discoveries</h1>
                 <container>
                     <div className="container1">
                         <img src={london} width= '320px' height= '200px' className="imageLondon"  />

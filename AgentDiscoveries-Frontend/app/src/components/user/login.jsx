@@ -81,6 +81,7 @@ export default class Login extends React.Component {
                 }
             })
             .then(response => {
+                UserHelper.storeUserName(this.state.username);
                 UserHelper.storeUserInfo(response);
                 window.location.hash = '#/';
             })

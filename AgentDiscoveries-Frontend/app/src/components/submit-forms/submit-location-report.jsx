@@ -61,7 +61,7 @@ export default class LocationReportSubmit extends React.Component {
                             onChange={this.onStatusChange}
                             id="status-input"
                             min="0"
-                            max="100"/>
+                            max="1000"/>
                     </FormGroup>
                     <FormGroup>
                         <ControlLabel>Report Title</ControlLabel>

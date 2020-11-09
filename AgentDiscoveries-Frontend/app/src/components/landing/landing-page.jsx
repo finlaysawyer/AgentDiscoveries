@@ -18,41 +18,12 @@ export default class Landing extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            api: 'http://worldtimeapi.org/api/timezone/',
             entities: []
         };
     }
 
     componentDidMount() {
         this.loadEntities();
-
-        fetch(this.state.api + 'Europe/London')
-            .then(res => res.json())
-            .then(res => this.setState({ london: res.datetime.slice(11, -16)}));
-        fetch(this.state.api + 'Europe/Paris')
-            .then(res => res.json())
-            .then(res => this.setState({ paris: res.datetime.slice(11, -16)}));
-        fetch(this.state.api + 'Asia/Singapore')
-            .then(res => res.json())
-            .then(res => this.setState({ singapore: res.datetime.slice(11, -16)}));
-        fetch(this.state.api + 'Europe/Berlin')
-            .then(res => res.json())
-            .then(res => this.setState({ berlin: res.datetime.slice(11, -16)}));
-        fetch(this.state.api + 'Europe/Madrid')
-            .then(res => res.json())
-            .then(res => this.setState({ madrid: res.datetime.slice(11, -16)}));
-        fetch(this.state.api + 'Europe/Stockholm')
-            .then(res => res.json())
-            .then(res => this.setState({ stockholm: res.datetime.slice(11, -16)}));
-        fetch(this.state.api + 'Europe/Moscow')
-            .then(res => res.json())
-            .then(res => this.setState({ moscow: res.datetime.slice(11, -16)}));
-        fetch(this.state.api + 'America/Los_Angeles')
-            .then(res => res.json())
-            .then(res => this.setState({ washingtonDC: res.datetime.slice(11, -16)}));
-        fetch(this.state.api + 'Asia/Shanghai')
-            .then(res => res.json())
-            .then(res => this.setState({ shanghai: res.datetime.slice(11, -16)}));
     }
 
     render() {
@@ -60,23 +31,15 @@ export default class Landing extends React.Component {
             <Bootstrap.Grid>
                 <Bootstrap.Row> 
                     {this.state.entities.map((entity, index) => (
-                        <Bootstrap.Col key={index} md={4}>
-                        <h1 key={index}>{entity.location}</h1>
-                        <h2>{this.getLocationTime(entity.timeZone)}</h2>
+                        <Bootstrap.Col key={index} md={12/this.state.entities.length} className="text-center">
+                            <h1 key={index}>{entity.location}</h1>
+                            <h2>{entity.siteName} | {new Date().toLocaleTimeString('en-GB', {timeZone: entity.timeZone})}</h2>
+                            <img src={"https://maps.googleapis.com/maps/api/staticmap?center=" + entity.latitude + ", " + entity.longitude + "&size=250x250&zoom=16&key="}></img>
                         </Bootstrap.Col>
                     ))}
                 </Bootstrap.Row>
             </Bootstrap.Grid>
         );
-    }
-
-    getLocationTime(timezone) {
-        return "test"
-        fetch(this.state.api + timezone)
-        .then(res => res.json())
-        .then(res => {
-            return res.datetime.slice(11, -16); // props instead?
-        })
     }
 
     loadEntities() {

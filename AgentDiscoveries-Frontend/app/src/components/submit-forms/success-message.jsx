@@ -8,9 +8,9 @@ export default class LocationReportSubmit extends React.Component {
     render() {
         return (
             <div>
-                <h1>Submission Successful</h1>
+                <h1 id='header'>Submission Successful</h1>
                 <Link to='/'>
-                    <Button type='submit'> Go back</Button>
+                    <Button id='go-back-button' type='submit'> Go back</Button>
                 </Link>
             </div>
         );

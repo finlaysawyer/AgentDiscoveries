@@ -65,7 +65,7 @@ export default class Landing extends React.Component {
         return (
 
             <div>
-                <h1>{greeting} <span>{getUser()} — welcome to Agent Discoveries.</span></h1>
+                <h1 id='landing-page-greet'>{greeting} <span>{getUser()} — welcome to Agent Discoveries.</span></h1>
                 <container>
                     <div className="container1">
                         <img src={london} width= '320px' height= '200px' className="location-image"  />

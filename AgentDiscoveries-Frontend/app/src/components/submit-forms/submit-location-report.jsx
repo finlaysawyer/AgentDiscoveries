@@ -131,13 +131,15 @@ export default class LocationReportSubmit extends React.Component {
 
         apiPost('reports/locationstatuses', body)
             .then(() => this.addMessage('Report submitted', 'info'))
-            .then(() => window.location.hash='#/Success-Message')
+            .then(() => window.location.hash='#/success-message')
             .catch(() => this.addMessage('Error submitting report, please try again later', 'danger'));
+
+        document.getElementById('submit-report').disabled = true;
 
         if (this.state.sendExternal) {
             apiPost('external/reports', body)
                 .then(() => this.addMessage('Report submitted to external partner', 'info'))
-                .then(() => window.location.hash='#/Success-Message')
+                .then(() => window.location.hash='#/success-message')
                 .catch(() => this.addMessage('Error submitting report externally, please try again later', 'danger'));
         }
     }

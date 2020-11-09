@@ -1,4 +1,8 @@
 import * as React from 'react';
+import * as Bootstrap from 'react-bootstrap';
+import {apiGet} from '../utilities/request-helper';
+import {errorLogAndRedirect} from '../error';
+
 import london from '../../../images/london.jpg';
 import paris from '../../../images/paris.jpg';
 import singapore from '../../../images/Singapore.jpg';
@@ -14,11 +18,14 @@ export default class Landing extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            api: 'http://worldtimeapi.org/api/timezone/'
+            api: 'http://worldtimeapi.org/api/timezone/',
+            entities: []
         };
     }
 
     componentDidMount() {
+        this.loadEntities();
+
         fetch(this.state.api + 'Europe/London')
             .then(res => res.json())
             .then(res => this.setState({ london: res.datetime.slice(11, -16)}));
@@ -49,6 +56,36 @@ export default class Landing extends React.Component {
     }
 
     render() {
+        return (
+            <Bootstrap.Grid>
+                <Bootstrap.Row> 
+                    {this.state.entities.map((entity, index) => (
+                        <Bootstrap.Col key={index} md={4}>
+                        <h1 key={index}>{entity.location}</h1>
+                        <h2>{this.getLocationTime(entity.timeZone)}</h2>
+                        </Bootstrap.Col>
+                    ))}
+                </Bootstrap.Row>
+            </Bootstrap.Grid>
+        );
+    }
+
+    getLocationTime(timezone) {
+        return "test"
+        fetch(this.state.api + timezone)
+        .then(res => res.json())
+        .then(res => {
+            return res.datetime.slice(11, -16); // props instead?
+        })
+    }
+
+    loadEntities() {
+        apiGet("locations")
+            .then(results => this.setState({ entities: results }))
+            .catch(errorLogAndRedirect);
+    }
+
+    render_old() {
         function getUser(){
             return UserHelper.getUserName();
         }

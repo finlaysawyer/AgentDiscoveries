@@ -1,9 +1,21 @@
 import * as React from 'react';
-import {Button, Panel} from 'react-bootstrap';
+import {Button, Panel, Modal} from 'react-bootstrap';
 import {apiGet} from '../utilities/request-helper';
 import {errorLogAndRedirect} from '../error';
 
 export default class SearchResult extends React.Component {
+    constructor()
+    {
+        super();
+        this.state={
+            show:false
+        };
+    }
+    handleModal()
+    {
+        this.setState({show:!this.state.show});
+    }
+
 
     render() {
         return (
@@ -22,6 +34,16 @@ export default class SearchResult extends React.Component {
                     <Panel.Body>
                         {this.renderResultBody(result)}
                         <Button bsStyle="success" type="button" onClick={() => this.generatePdf(result[Object.keys(result)[0]])}>Export to PDF</Button>
+                        <Button bsStyle="success" type="button" onClick={() =>this.handleModal()}>Open Modal</Button>
+                        <Modal show={this.state.show} >
+                            <Modal.Header>Modal Head Part</Modal.Header>
+                            <Modal.Body>This is the modal body</Modal.Body>
+                            <Modal.Footer>
+                                <Button bsStyle="success" type="button" onClick={() =>this.handleModal()}>
+                            Close modal
+                                </Button>
+                            </Modal.Footer>
+                        </Modal>
                     </Panel.Body>
                 </Panel>
             );

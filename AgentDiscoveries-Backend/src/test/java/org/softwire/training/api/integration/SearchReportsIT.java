@@ -34,9 +34,9 @@ public class SearchReportsIT {
         WebElement locationSelect = driver.findElement(By.id("location-select"));
         new Select(locationSelect).selectByIndex(1);
         WebElement statusInput = driver.findElement(By.id("status-input"));
-        statusInput.sendKeys("1");
+        statusInput.sendKeys("950");
         WebElement reportTitleInput = driver.findElement(By.id("title-input"));
-        reportTitleInput.sendKeys("A test report title");
+        reportTitleInput.sendKeys("test");
         WebElement reportInput = driver.findElement(By.id("report-input"));
         reportInput.sendKeys("A test report");
         WebElement submitButton = driver.findElement(By.id("submit-report"));

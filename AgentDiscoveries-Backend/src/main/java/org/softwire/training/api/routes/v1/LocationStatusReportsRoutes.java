@@ -37,10 +37,12 @@ public class LocationStatusReportsRoutes extends ReportsRoutesBase<LocationStatu
                 permissionsVerifier);
         this.locationsDao = locationsDao;
     }
+    int a = 1000;
+    int b = 0;
 
     @Override
     protected LocationStatusReport validateThenMap(LocationStatusReportApiModel apiModel) {
-        if (apiModel.getStatus() > 1000 || apiModel.getStatus() < 0) {
+        if (apiModel.getStatus() > a || apiModel.getStatus() < b) {
             throw new FailedRequestException(ErrorCode.INVALID_INPUT, "Location status must be between 0 and 1000");
         }
 

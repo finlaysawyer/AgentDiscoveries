@@ -89,8 +89,8 @@ public class LocationStatusReportsRoutes extends ReportsRoutesBase<LocationStatu
         QueryParamsMap queryMap = req.queryMap();
         List<ReportSearchCriterion> searchCriteria = new ArrayList<>();
 
-        if (!isNullOrEmpty(queryMap.get("callSign").value())) {
-            searchCriteria.add(new AgentCallSignSearchCriterion(queryMap.get("callSign").value()));
+        if (!isNullOrEmpty(queryMap.get("agentId").value())) {
+            searchCriteria.add(new AgentCallSignSearchCriterion(queryMap.get("agentId").integerValue()));
         }
 
         if (!isNullOrEmpty(queryMap.get("locationId").value())) {

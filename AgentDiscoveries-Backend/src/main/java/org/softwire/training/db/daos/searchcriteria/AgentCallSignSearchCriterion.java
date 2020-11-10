@@ -6,10 +6,10 @@ import java.util.Map;
 public final class AgentCallSignSearchCriterion extends ReportSearchCriterion {
 
     private static final String AGENT_CALLSIGN_BINDING_NAME = "call_sign_sc_call_sign";
-    private final String callSign;
+    private final int agentId;
 
-    public AgentCallSignSearchCriterion(String callSign) {
-        this.callSign = callSign;
+    public AgentCallSignSearchCriterion(int agentId) {
+        this.agentId = agentId;
     }
 
     @Override
@@ -19,6 +19,6 @@ public final class AgentCallSignSearchCriterion extends ReportSearchCriterion {
 
     @Override
     public Map<String, Object> getBindingsForSql() {
-        return Collections.singletonMap(AGENT_CALLSIGN_BINDING_NAME, callSign);
+        return Collections.singletonMap(AGENT_CALLSIGN_BINDING_NAME, agentId);
     }
 }

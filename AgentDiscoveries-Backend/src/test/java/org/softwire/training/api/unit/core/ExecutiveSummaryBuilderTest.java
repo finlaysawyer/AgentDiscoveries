@@ -55,7 +55,7 @@ public class ExecutiveSummaryBuilderTest {
         location.setTimeZone("UTC");
 
         LocationStatusReport report = new LocationStatusReport();
-        report.setStatus((byte) 40);
+        report.setStatus((int) 40);
         report.setReportTime(LocalDateTime.of(2018, 5, 23, 14, 29)); // US/Pacific is -7 hours
         report.setReportBody("Everything going well with the new arrival");
 

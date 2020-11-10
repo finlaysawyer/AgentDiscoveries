@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.softwire.training.api.integration.helper.LoginHelper;
 import org.softwire.training.api.integration.helper.WebDriverHelper;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RedirectIT {
@@ -43,7 +42,32 @@ public class RedirectIT {
         submitButton.click();
 
         WebElement header = driver.findElement(By.id("header"));
-        assertEquals("Submission Successful", header);
+        assertTrue(header.getText().contains("Submission Successful"));
+
+        WebElement goBackButton = driver.findElement(By.id("go-back-button"));
+        goBackButton.click();
+
+        WebElement landingPage = driver.findElement(By.id("landing-page-greet"));
+        assertTrue(landingPage.getText().contains("welcome"));
+    }
+
+    @Test
+    public void checkSubmissionRedirects() {
+        driver.get(TARGET_ADDRESS);
+        LoginHelper.ensureLoggedIn(driver);
+        driver.get(TARGET_ADDRESS + "/#/submit/region");
+
+        WebElement regionSelect = driver.findElement(By.id("region-select"));
+        new Select(regionSelect).selectByIndex(1);
+        WebElement statusInput = driver.findElement(By.id("status-input"));
+        statusInput.sendKeys("1");
+        WebElement reportInput = driver.findElement(By.id("report-input"));
+        reportInput.sendKeys("A test report");
+        WebElement submitButton = driver.findElement(By.id("submit-report"));
+        submitButton.click();
+
+        WebElement header = driver.findElement(By.id("header"));
+        assertTrue(header.getText().contains("Submission Successful"));
 
         WebElement goBackButton = driver.findElement(By.id("go-back-button"));
         goBackButton.click();

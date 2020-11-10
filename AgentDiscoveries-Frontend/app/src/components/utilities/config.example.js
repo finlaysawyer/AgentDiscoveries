@@ -1,3 +1,3 @@
 export function mapsApiKey() {
-    return "";
+    return '';
 }

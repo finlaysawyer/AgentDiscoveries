@@ -37,14 +37,14 @@ export default class Landing extends React.Component {
     generateMap(latitude, longitude) {
         if (latitude != null && longitude != null) {
             return (
-                <img src={"https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + ", " + longitude + "&size=250x250&zoom=16&key=" + mapsApiKey()}></img>
+                <img src={'https://maps.googleapis.com/maps/api/staticmap?center=' + latitude + ', ' + longitude + '&size=250x250&zoom=16&key=' + mapsApiKey()}></img>
             );
         }
     }
 
     generateWelcome() {
         let user = UserHelper.getUserName();
-        let greeting = "";
+        let greeting = '';
 
         const date = new Date();
         const currentTime = date.getHours();
@@ -61,7 +61,7 @@ export default class Landing extends React.Component {
     }
 
     loadEntities() {
-        apiGet("locations")
+        apiGet('locations')
             .then(results => this.setState({ entities: results }))
             .catch(errorLogAndRedirect);
     }

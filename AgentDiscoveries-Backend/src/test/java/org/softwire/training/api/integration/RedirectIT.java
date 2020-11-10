@@ -52,7 +52,7 @@ public class RedirectIT {
     }
 
     @Test
-    public void regionRedirect() {
+    public void checkSubmissionRedirects() {
         driver.get(TARGET_ADDRESS);
         LoginHelper.ensureLoggedIn(driver);
         driver.get(TARGET_ADDRESS + "/#/submit/region");

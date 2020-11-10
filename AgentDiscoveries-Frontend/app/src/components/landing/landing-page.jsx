@@ -3,6 +3,7 @@ import * as Bootstrap from 'react-bootstrap';
 import {apiGet} from '../utilities/request-helper';
 import {errorLogAndRedirect} from '../error';
 import * as UserHelper from '../utilities/user-helper';
+import {mapsApiKey} from '../utilities/config';
 
 export default class Landing extends React.Component {
     constructor(props) {
@@ -36,7 +37,7 @@ export default class Landing extends React.Component {
     generateMap(latitude, longitude) {
         if (latitude != null && longitude != null) {
             return (
-                <img src={"https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + ", " + longitude + "&size=250x250&zoom=16&key=AIzaSyDX49vDhcLkUrZV16O57h7WthEypDfR3-w"}></img>
+                <img src={"https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + ", " + longitude + "&size=250x250&zoom=16&key=" + mapsApiKey()}></img>
             );
         }
     }

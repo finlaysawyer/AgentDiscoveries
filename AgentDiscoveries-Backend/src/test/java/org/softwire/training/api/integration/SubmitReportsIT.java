@@ -35,11 +35,11 @@ public class SubmitReportsIT {
         WebElement locationSelect = driver.findElement(By.id("location-select"));
         new Select(locationSelect).selectByIndex(1);
         WebElement statusInput = driver.findElement(By.id("status-input"));
-        statusInput.sendKeys("1");
+        statusInput.sendKeys("963");
         WebElement reportTitleInput = driver.findElement(By.id("title-input"));
         reportTitleInput.sendKeys("A test report title");
         WebElement reportInput = driver.findElement(By.id("report-input"));
-        reportInput.sendKeys("A test report");
+        reportInput.sendKeys("A test report over 100");
         WebElement submitButton = driver.findElement(By.id("submit-report"));
         submitButton.click();
 
@@ -77,7 +77,7 @@ public class SubmitReportsIT {
         WebElement locationSelect = driver.findElement(By.id("location-select"));
         new Select(locationSelect).selectByIndex(1);
         WebElement statusInput = driver.findElement(By.id("status-input"));
-        statusInput.sendKeys("1000"); // invalid
+        statusInput.sendKeys("1001"); // invalid
         WebElement reportTitleInput = driver.findElement(By.id("title-input"));
         reportTitleInput.sendKeys("A test report title");
         WebElement reportInput = driver.findElement(By.id("report-input"));

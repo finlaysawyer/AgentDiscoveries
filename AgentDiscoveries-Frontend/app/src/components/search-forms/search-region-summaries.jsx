@@ -10,11 +10,20 @@ export default class RegionSummariesSearch extends React.Component {
     constructor(props) {
         super(props);
 
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var twoWeeks = today - 12096e5;
+        
+        today = yyyy + '/' + mm + '/' + dd;
+
         this.state = {
+            regions: [],
             regionId: '',
             userId: '',
-            fromTime: '',
-            toTime: '',
+            fromTime: today,
+            toTime: twoWeeks,
 
             results: [],
             message: {}
@@ -27,6 +36,15 @@ export default class RegionSummariesSearch extends React.Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
 
+    componentDidMount() {
+        apiGet('regions')
+            .then(results => this.setState({ regions: results }))
+            .catch(() => this.addMessage('Error fetching regions, please try again later', 'danger'));
+
+        apiGet('reports/regionsummaries')
+            .then(results => this.setState({ results: results, message: {} }))
+            .catch(error => this.setState({ message: { message: error.message, type: 'danger' } }));
+    }
 
     render() {
         return (
@@ -38,10 +56,14 @@ export default class RegionSummariesSearch extends React.Component {
 
                     <FormGroup>
                         <ControlLabel>Region</ControlLabel>
-                        <FormControl type='text'
-                            placeholder='Enter region ID'
+                        <FormControl componentClass='select'
                             value={this.state.regionId}
-                            onChange={this.onRegionChange}/>
+                            onChange={this.onRegionChange}
+                            id='region-select'>
+                            <option value='' hidden>Choose a region</option>
+                            {this.state.regions.map(region =>
+                                <option key={region.regionId} value={region.regionId}>{region.name}</option>)}
+                        </FormControl>
                     </FormGroup>
                     <FormGroup>
                         <ControlLabel>User</ControlLabel>
@@ -70,7 +92,7 @@ export default class RegionSummariesSearch extends React.Component {
     }
 
     onRegionChange(event) {
-        this.setState({ regionId: parseInt(event.target.value) });
+        this.setState({ regionId: event.target.value && parseInt(event.target.value) });
     }
 
     onUserChange(event) {

@@ -7,7 +7,7 @@ export default class SearchResult extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: []
+        
         }
     }
 
@@ -15,9 +15,9 @@ export default class SearchResult extends React.Component {
         var maxResults = 10 * x;
         var minResults = maxResults - 10;
 
-        this.setState({items: this.props.results.slice(minResults, maxResults)});
-        this.setState({resultsHeader: this.getResultsHeader(this.items)});
-        this.setState({results: this.renderResults(this.items)});       
+        var items = this.props.results.slice(minResults, maxResults);
+        this.setState({resultsHeader: this.getResultsHeader(items)});
+        this.setState({results: this.renderResults(items)});
     }
 
     pagination() {
@@ -33,7 +33,7 @@ export default class SearchResult extends React.Component {
                     </ul>
                     <div>
                         {this.state.resultsHeader}
-                        {this.renderResults(this.items)}
+                        {this.state.results}
                     </div>
                 </nav>
             </div>

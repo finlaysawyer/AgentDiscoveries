@@ -136,8 +136,4 @@ export default class LocationReportsSearch extends React.Component {
         
     
     }
-    onResultsChange(event) {
-            this.setState({ results: event.target.value })
-            this.sliceArray(1);
-    }
 }

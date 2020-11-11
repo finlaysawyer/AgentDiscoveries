@@ -22,8 +22,8 @@ export default class RegionSummariesSearch extends React.Component {
             regions: [],
             regionId: '',
             userId: '',
-            fromTime: twoWeeks,
-            toTime: today,
+            fromTime: today,
+            toTime: twoWeeks,
 
             results: [],
             message: {}
@@ -40,6 +40,10 @@ export default class RegionSummariesSearch extends React.Component {
         apiGet('regions')
             .then(results => this.setState({ regions: results }))
             .catch(() => this.addMessage('Error fetching regions, please try again later', 'danger'));
+
+        apiGet('reports/regionsummaries')
+            .then(results => this.setState({ results: results, message: {} }))
+            .catch(error => this.setState({ message: { message: error.message, type: 'danger' } }));
     }
 
     render() {

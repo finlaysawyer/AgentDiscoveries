@@ -21,7 +21,7 @@ export default class SearchResult extends React.Component {
                     <Panel.Heading>Result</Panel.Heading>
                     <Panel.Body>
                         {this.renderResultBody(result)}
-                        <Button bsStyle="success" type="button" onClick={() => this.generatePdf(result[Object.keys(result)[0]])}>Export to PDF</Button>
+                        <Button bsStyle="success" type="button" onClick={() => this.generatePdf(result.reportId)}>Export to PDF</Button>
                     </Panel.Body>
                 </Panel>
             );

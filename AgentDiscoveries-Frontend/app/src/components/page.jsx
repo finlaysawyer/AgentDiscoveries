@@ -7,9 +7,7 @@ export default class Page extends React.Component {
         return (
             <React.Fragment>
                 <NavigationBar />
-                <div className='container'>
                     {this.props.children}
-                </div>
             </React.Fragment>
         );
     }

@@ -10,12 +10,20 @@ export default class RegionSummariesSearch extends React.Component {
     constructor(props) {
         super(props);
 
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var twoWeeks = today - 12096e5;
+        
+        today = yyyy + '/' + mm + '/' + dd;
+
         this.state = {
             regions: [],
             regionId: '',
             userId: '',
-            fromTime: '',
-            toTime: '',
+            fromTime: today,
+            toTime: twoWeeks,
 
             results: [],
             message: {}
@@ -32,7 +40,11 @@ export default class RegionSummariesSearch extends React.Component {
         apiGet('regions')
             .then(results => this.setState({ regions: results }))
             .catch(() => this.addMessage('Error fetching regions, please try again later', 'danger'));
-        }
+
+        apiGet('reports/regionsummaries')
+            .then(results => this.setState({ results: results, message: {} }))
+            .catch(error => this.setState({ message: { message: error.message, type: 'danger' } }));
+    }
 
     render() {
         return (

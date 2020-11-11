@@ -1,0 +1,1 @@
+ALTER TABLE location_reports MODIFY status INTEGER;

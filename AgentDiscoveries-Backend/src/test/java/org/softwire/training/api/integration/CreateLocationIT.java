@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.softwire.training.api.integration.helper.LoginHelper;
 import org.softwire.training.api.integration.helper.WebDriverHelper;
@@ -27,7 +25,7 @@ public class CreateLocationIT {
     }
 
     @Test
-    public void testCanSubmitLocation() {
+    public void testCanSubmitLocationAndAppearsOnLanding() {
         driver.get(TARGET_ADDRESS);
         LoginHelper.ensureLoggedInAsAdmin(driver);
         driver.get(TARGET_ADDRESS + "/#/admin/locations/add");
@@ -47,5 +45,10 @@ public class CreateLocationIT {
 
         wait.until(ExpectedConditions.urlToBe(TARGET_ADDRESS + "/#/admin/locations"));
         assertEquals(TARGET_ADDRESS + "/#/admin/locations", driver.getCurrentUrl());
+
+        driver.get(TARGET_ADDRESS + "/#/Landing");
+
+        WebElement locationName = driver.findElement(By.xpath("//*[text()='MI5']"));
+        assertTrue(locationName.isDisplayed());
     }
 }

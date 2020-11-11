@@ -10,12 +10,20 @@ export default class RegionSummariesSearch extends React.Component {
     constructor(props) {
         super(props);
 
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var twoWeeks = today - 12096e5;
+        
+        today = yyyy + '/' + mm + '/' + dd;
+
         this.state = {
             regions: [],
             regionId: '',
             userId: '',
-            fromTime: '',
-            toTime: '',
+            fromTime: twoWeeks,
+            toTime: today,
 
             results: [],
             message: {}

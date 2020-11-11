@@ -1,8 +1,11 @@
 package org.softwire.training.models;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@ToString
 @MappedSuperclass
 public class ReportBase {
 

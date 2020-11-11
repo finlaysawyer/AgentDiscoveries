@@ -1,7 +1,10 @@
 package org.softwire.training.models;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 
+@ToString
 @Entity
 @Table(name = "users")
 public class User {

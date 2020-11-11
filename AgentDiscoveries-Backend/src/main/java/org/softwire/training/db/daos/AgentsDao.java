@@ -1,5 +1,7 @@
 package org.softwire.training.db.daos;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.softwire.training.models.Agent;
 
 import javax.inject.Inject;
@@ -9,6 +11,7 @@ import java.util.Optional;
 
 public class AgentsDao {
 
+    private static final Logger logger = LoggerFactory.getLogger("org.software.training.db");
     private DaoHelper<Agent> helper;
 
     @Inject
@@ -26,6 +29,7 @@ public class AgentsDao {
 
     public int createAgent(Agent agent) {
         helper.createEntity(agent);
+        logger.info("Agent created: " + agent.toString());
         return agent.getAgentId();
     }
 

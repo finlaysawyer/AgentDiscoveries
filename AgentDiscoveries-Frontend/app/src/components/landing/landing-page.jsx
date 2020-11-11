@@ -3,7 +3,7 @@ import * as Bootstrap from 'react-bootstrap';
 import {apiGet} from '../utilities/request-helper';
 import {errorLogAndRedirect} from '../error';
 import * as UserHelper from '../utilities/user-helper';
-import {mapsApiKey} from '../utilities/config';
+import {mapsApiKey} from '../utilities/config.example';
 
 export default class Landing extends React.Component {
     constructor(props) {

@@ -4,10 +4,46 @@ import {apiGet} from '../utilities/request-helper';
 import {errorLogAndRedirect} from '../error';
 
 export default class SearchResult extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            items: []
+        }
+    }
+
+    sliceArray(x) {
+        var maxResults = 10 * x;
+        var minResults = maxResults - 10;
+
+        this.setState({items: this.props.results.slice(minResults, maxResults)});
+        this.setState({resultsHeader: this.getResultsHeader(this.items)});
+        this.setState({results: this.renderResults(this.items)});       
+    }
+
+    pagination() {
+        return ( 
+            <div>
+                <nav>
+                    <ul class="pagination justify-content-left">
+                        <li><a onClick={() => this.sliceArray(1)}>Previous</a></li>
+                        <li><a onClick={() => this.sliceArray(1)}>1</a></li>
+                        <li><a onClick={() => this.sliceArray(2)}>2</a></li>
+                        <li><a onClick={() => this.sliceArray(3)}>3</a></li>
+                        <li><a onClick={() => this.sliceArray(1)}>Next</a></li>
+                    </ul>
+                    <div>
+                        {this.state.resultsHeader}
+                        {this.renderResults(this.items)}
+                    </div>
+                </nav>
+            </div>
+        );
+    }
 
     render() {
-        return (
-            <div className='results'>
+        return(
+            <div>
+                {this.pagination()}
                 {this.getResultsHeader(this.props.results)}
                 {this.renderResults(this.props.results)}
             </div>
@@ -15,6 +51,7 @@ export default class SearchResult extends React.Component {
     }
 
     renderResults(results) {
+        
         return results.map((result, index) => {
             return (
                 <Panel id="resultsBox" key={index}>

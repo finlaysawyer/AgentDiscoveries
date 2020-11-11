@@ -40,7 +40,7 @@ export default class RegionSummariesSearch extends React.Component {
         apiGet('regions')
             .then(results => this.setState({ regions: results }))
             .catch(() => this.addMessage('Error fetching regions, please try again later', 'danger'));
-        }
+    }
 
     render() {
         return (

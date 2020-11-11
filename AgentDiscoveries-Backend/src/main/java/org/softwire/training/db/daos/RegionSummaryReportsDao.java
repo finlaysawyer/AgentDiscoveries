@@ -1,5 +1,8 @@
 package org.softwire.training.db.daos;
 
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.softwire.training.db.daos.searchcriteria.ReportSearchCriterion;
 import org.softwire.training.models.RegionSummaryReport;
 
@@ -7,12 +10,15 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class RegionSummaryReportsDao implements ReportsDao<RegionSummaryReport> {
 
+    private static final Logger logger = LoggerFactory.getLogger("org.software.training.db");
     private EntityManagerFactory entityManagerFactory;
     private DaoHelper<RegionSummaryReport> helper;
 
@@ -28,10 +34,12 @@ public class RegionSummaryReportsDao implements ReportsDao<RegionSummaryReport> 
 
     public int createReport(RegionSummaryReport report) {
         helper.createEntity(report);
+        logger.info("Report created: " + report.toString());
         return report.getReportId();
     }
 
     public void deleteReport(int reportId) {
+        logger.info("Report deleted with id: " + reportId);
         helper.deleteEntity(RegionSummaryReport.class, reportId);
     }
 
@@ -50,6 +58,8 @@ public class RegionSummaryReportsDao implements ReportsDao<RegionSummaryReport> 
         }
 
         List<RegionSummaryReport> results = query.getResultList();
+
+        logger.info("Report search retrieved the following: \n" + StringUtils.join(results, ", \n"));
 
         em.getTransaction().commit();
         em.close();

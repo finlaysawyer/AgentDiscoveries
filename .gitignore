@@ -4,4 +4,5 @@ target/
 AgentDiscoveries-Backend/src/main/resources/META-INF/persistence.xml
 AgentDiscoveries-Backend/src/main/resources/config.properties
 node_modules/
-summary.pdf
+*.log
+*.pdf

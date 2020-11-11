@@ -1,5 +1,7 @@
 package org.softwire.training.db.daos;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.softwire.training.models.Region;
 
 import javax.inject.Inject;
@@ -9,6 +11,7 @@ import java.util.Optional;
 
 public class RegionsDao {
 
+    private static final Logger logger = LoggerFactory.getLogger("org.software.training.db");
     private DaoHelper<Region> helper;
 
     @Inject
@@ -26,6 +29,7 @@ public class RegionsDao {
 
     public int createRegion(Region region) {
         helper.createEntity(region);
+        logger.info("Region created: " + region.toString());
         return region.getRegionId();
     }
 

@@ -34,18 +34,18 @@ export class Landing extends React.Component {
             <div>
                 <Bootstrap.Grid>
                     <Bootstrap.Row>
-                    <h1 className="text-center">{this.generateWelcome()}</h1>
-                    {this.state.entities.map((entity, index) => (
-                    <Bootstrap.Col key={index} md={12/this.state.entities.length} className="text-center">
-                        <h1 key={index}>{entity.location}</h1>
-                        <h2>{entity.siteName} | {new Date().toLocaleTimeString('en-GB', {timeZone: entity.timeZone})}</h2> 
-                    </Bootstrap.Col>
-                    ))}             
+                        <h1 className="text-center">{this.generateWelcome()}</h1>
+                        {this.state.entities.map((entity, index) => (
+                            <Bootstrap.Col key={index} md={12/this.state.entities.length} className="text-center">
+                                <h1 key={index}>{entity.location}</h1>
+                                <h2>{entity.siteName} | {new Date().toLocaleTimeString('en-GB', {timeZone: entity.timeZone})}</h2>
+                            </Bootstrap.Col>
+                        ))}
                     </Bootstrap.Row>
                     <br></br>
                 </Bootstrap.Grid>
                 <Map google={this.props.google}
-                     zoom={5}
+                    zoom={5}
                     style={{
                         height: '70%',
                     }}
@@ -54,7 +54,7 @@ export class Landing extends React.Component {
                         lng: 13.4049543
                     }}
                 >
-                {this.state.entities.map(this.createMarker)}
+                    {this.state.entities.map(this.createMarker)}
                 </Map>
             </div>
         );

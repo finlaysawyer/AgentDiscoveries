@@ -11,6 +11,9 @@ export default class LocationReportsSearch extends React.Component {
         super(props);
 
         this.state = {
+            agents: [],
+            locations: [],
+
             callSign: '',
             locationId: '',
             reportTitle: '',
@@ -27,6 +30,15 @@ export default class LocationReportsSearch extends React.Component {
         this.onFromChange = this.onFromChange.bind(this);
         this.onToChange = this.onToChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    componentWillMount() {
+        apiGet('locations')
+            .then(results => this.setState({ locations: results }))
+            .catch(() => this.addMessage('Error fetching locations, please try again later', 'danger'));
+        apiGet('agents')
+            .then(results => this.setState({ agents: results }))
+            .catch(() => this.addMessage('Error fetching call signs, please try again later', 'danger'));
     }
 
     render() {

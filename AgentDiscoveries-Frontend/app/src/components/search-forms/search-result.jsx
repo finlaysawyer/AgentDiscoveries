@@ -34,10 +34,10 @@ export default class SearchResult extends React.Component {
                     <Panel.Body>
                         {this.renderResultBody(result)}
                         <Button bsStyle="success" type="button" onClick={() => this.generatePdf(result[Object.keys(result)[0]])}>Export to PDF</Button>
-                        <Button bsStyle="success" type="button" onClick={() =>this.handleModal(result[Object.keys(result)[0]])}>Open Modal</Button>
+                        <Button bsStyle="success" type="button" onClick={() =>this.handleModal()}>Open Modal</Button>
                         <Modal show={this.state.show} >
-                            <Modal.Header>Modal Head Part</Modal.Header>
-                            <Modal.Body>{this.renderResultBody()}</Modal.Body>
+                            <Modal.Header>{result.reportTitle}</Modal.Header>
+                            <Modal.Body>{result.reportBody}</Modal.Body>
                             <Modal.Footer>
                                 <Button bsStyle="success" type="button" onClick={() =>this.handleModal()}>
                             Close modal

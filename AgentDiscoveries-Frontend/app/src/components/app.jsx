@@ -12,6 +12,7 @@ import LocationReportSearch from './search-forms/search-location-reports';
 import RegionSummarySearch from './search-forms/search-region-summaries';
 import LocationReportSubmit from './submit-forms/submit-location-report';
 import RegionSummarySubmit from './submit-forms/submit-region-summary';
+import SuccessMessage from './submit-forms/success-message';
 import Entities from './admin/entities-view';
 import TodaysCodePage from './todays-code-page';
 import LocationForm from './admin/location-form';
@@ -31,10 +32,12 @@ export default class App extends React.Component {
                         <Route path='/search/region' render={() => <Page><RegionSummarySearch /></Page>} />
                         <Route path='/submit/location' render={() => <Page><LocationReportSubmit /></Page>} />
                         <Route path='/submit/region' render={() => <Page><RegionSummarySubmit /></Page>} />
+                        <Route path='/success-message' render={() => <Page><SuccessMessage /></Page>} />
 
                         <Route path='/admin/locations' exact render={() => <Page><Entities api='locations' key='locations'/></Page>} />
                         <Route path='/admin/regions' exact render={() => <Page><Entities api='regions' key='regions'/></Page>} />
                         <Route path='/admin/users' exact render={() => <Page><Entities api='users' key='users'/></Page>} />
+
 
                         <Route path='/admin/locations/add' render={() => <Page><LocationForm/></Page>} />
                         <Route path='/admin/regions/add' render={() => <Page><RegionForm/></Page>} />

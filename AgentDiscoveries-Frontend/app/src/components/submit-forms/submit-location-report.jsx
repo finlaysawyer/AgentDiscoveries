@@ -61,7 +61,7 @@ export default class LocationReportSubmit extends React.Component {
                             onChange={this.onStatusChange}
                             id="status-input"
                             min="0"
-                            max="100"/>
+                            max="1000"/>
                     </FormGroup>
                     <FormGroup>
                         <ControlLabel>Report Title</ControlLabel>
@@ -118,8 +118,8 @@ export default class LocationReportSubmit extends React.Component {
 
     onSubmit(event) {
         event.preventDefault();
-
         this.setState({ messages: [] });
+
 
         const body = {
             locationId: this.state.locationId,
@@ -131,14 +131,19 @@ export default class LocationReportSubmit extends React.Component {
 
         apiPost('reports/locationstatuses', body)
             .then(() => this.addMessage('Report submitted', 'info'))
+            .then(() => window.location.hash='#/success-message')
             .catch(() => this.addMessage('Error submitting report, please try again later', 'danger'));
+
+        document.getElementById('submit-report').disabled = true;
 
         if (this.state.sendExternal) {
             apiPost('external/reports', body)
                 .then(() => this.addMessage('Report submitted to external partner', 'info'))
+                .then(() => window.location.hash='#/success-message')
                 .catch(() => this.addMessage('Error submitting report externally, please try again later', 'danger'));
         }
     }
+
 
     addMessage(message, type) {
         this.setState(oldState => {

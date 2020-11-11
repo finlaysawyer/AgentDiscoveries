@@ -36,7 +36,7 @@ public class SearchReportsIT {
         WebElement statusInput = driver.findElement(By.id("status-input"));
         statusInput.sendKeys("1");
         WebElement reportTitleInput = driver.findElement(By.id("title-input"));
-        reportTitleInput.sendKeys("A test report title");
+        reportTitleInput.sendKeys("test");
         WebElement reportInput = driver.findElement(By.id("report-input"));
         reportInput.sendKeys("A test report");
         WebElement submitButton = driver.findElement(By.id("submit-report"));

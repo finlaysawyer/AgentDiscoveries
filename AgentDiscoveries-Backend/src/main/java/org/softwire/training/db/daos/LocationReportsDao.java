@@ -1,5 +1,8 @@
 package org.softwire.training.db.daos;
 
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.softwire.training.db.daos.searchcriteria.ReportSearchCriterion;
 import org.softwire.training.models.LocationStatusReport;
 
@@ -13,6 +16,7 @@ import java.util.Optional;
 
 public class LocationReportsDao implements ReportsDao<LocationStatusReport> {
 
+    private static final Logger logger = LoggerFactory.getLogger("org.software.training.db");
     private EntityManagerFactory entityManagerFactory;
     private DaoHelper<LocationStatusReport> helper;
 
@@ -28,10 +32,12 @@ public class LocationReportsDao implements ReportsDao<LocationStatusReport> {
 
     public int createReport(LocationStatusReport report) {
         helper.createEntity(report);
+        logger.info("Report created: " + report.toString());
         return report.getReportId();
     }
 
     public void deleteReport(int reportId) {
+        logger.info("Report deleted with id: " + reportId);
         helper.deleteEntity(LocationStatusReport.class, reportId);
     }
 
@@ -50,6 +56,8 @@ public class LocationReportsDao implements ReportsDao<LocationStatusReport> {
         }
 
         List<LocationStatusReport> results = query.getResultList();
+
+        logger.info("Report search retrieved the following: \n" + StringUtils.join(results, ", \n"));
 
         em.getTransaction().commit();
         em.close();

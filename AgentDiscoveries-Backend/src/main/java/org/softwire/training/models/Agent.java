@@ -1,8 +1,11 @@
 package org.softwire.training.models;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
+@ToString
 @Entity
 @Table(name = "agents")
 public class Agent {

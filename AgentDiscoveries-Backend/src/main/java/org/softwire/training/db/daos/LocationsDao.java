@@ -1,5 +1,7 @@
 package org.softwire.training.db.daos;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.softwire.training.models.Location;
 
 import javax.inject.Inject;
@@ -9,6 +11,7 @@ import java.util.Optional;
 
 public class LocationsDao {
 
+    private static final Logger logger = LoggerFactory.getLogger("org.software.training.db");
     private DaoHelper<Location> helper;
 
     @Inject
@@ -26,6 +29,7 @@ public class LocationsDao {
 
     public int createLocation(Location location) {
         helper.createEntity(location);
+        logger.info("Location created: " + location.toString());
         return location.getLocationId();
     }
 

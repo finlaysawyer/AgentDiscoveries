@@ -1,10 +1,15 @@
 package org.softwire.training.api.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * The UserApiModel is a version of the domain model with a password field instead of a hashed password.
  *
  * This should as the model for requests/responses for the API though responses should not include the password.
  */
+@Getter
+@Setter
 public class UserApiModel {
 
     private int userId;
@@ -13,43 +18,4 @@ public class UserApiModel {
     private Integer agentId; // Nullable
     private boolean admin;
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public Integer getAgentId() {
-        return agentId;
-    }
-
-    public void setAgentId(Integer agentId) {
-        this.agentId = agentId;
-    }
-
-    public boolean isAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
-    }
 }

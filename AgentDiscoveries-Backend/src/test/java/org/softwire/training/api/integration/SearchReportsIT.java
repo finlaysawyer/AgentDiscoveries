@@ -53,7 +53,7 @@ public class SearchReportsIT {
         searchButton.click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("resultsBox")));
-        WebElement alert = driver.findElement(By.className("results"));
-        assertTrue(alert.getText().contains("results"));
+        WebElement alert = driver.findElement(By.id("results-length"));
+        assertTrue(alert.getText().contains("result"));
     }
 }

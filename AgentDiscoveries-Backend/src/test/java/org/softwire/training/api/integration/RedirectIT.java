@@ -5,11 +5,13 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.softwire.training.api.integration.helper.LoginHelper;
 import org.softwire.training.api.integration.helper.WebDriverHelper;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RedirectIT {
@@ -47,8 +49,8 @@ public class RedirectIT {
         WebElement goBackButton = driver.findElement(By.id("go-back-button"));
         goBackButton.click();
 
-        WebElement landingPage = driver.findElement(By.id("landing-page-greet"));
-        assertTrue(landingPage.getText().contains("welcome"));
+        wait.until(ExpectedConditions.urlToBe(TARGET_ADDRESS + "/#/Landing"));
+        assertEquals(TARGET_ADDRESS + "/#/Landing", driver.getCurrentUrl());
     }
 
     @Test
@@ -72,7 +74,7 @@ public class RedirectIT {
         WebElement goBackButton = driver.findElement(By.id("go-back-button"));
         goBackButton.click();
 
-        WebElement landingPage = driver.findElement(By.id("landing-page-greet"));
-        assertTrue(landingPage.getText().contains("welcome"));
+        wait.until(ExpectedConditions.urlToBe(TARGET_ADDRESS + "/#/Landing"));
+        assertEquals(TARGET_ADDRESS + "/#/Landing", driver.getCurrentUrl());
     }
 }

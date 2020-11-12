@@ -107,8 +107,8 @@ export default class SearchResult extends React.Component {
     getResultsHeader(results) {
         return results.length > 0
             ? (results.length === 1
-                ? <h3>{`${results.length} result`}</h3>
-                : <h3>{`${results.length} results`}</h3>)
+                ? <h3 id="results-length">{`${results.length} result`}</h3>
+                : <h3 id="results-length">{`${results.length} results`}</h3>)
             : '';
     }
 }

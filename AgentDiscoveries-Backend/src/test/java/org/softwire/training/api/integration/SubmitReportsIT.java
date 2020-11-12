@@ -11,8 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.softwire.training.api.integration.helper.LoginHelper;
 import org.softwire.training.api.integration.helper.WebDriverHelper;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SubmitReportsIT {
     public static final String TARGET_ADDRESS = System.getProperty("target.address");
@@ -43,9 +42,14 @@ public class SubmitReportsIT {
         WebElement submitButton = driver.findElement(By.id("submit-report"));
         submitButton.click();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("alert-info")));
-        WebElement alert = driver.findElement(By.className("alert-info"));
-        assertTrue(alert.getText().contains("Report submitted"));
+        WebElement header = driver.findElement(By.id("header"));
+        assertTrue(header.getText().contains("Submission Successful"));
+
+        WebElement goBackButton = driver.findElement(By.id("go-back-button"));
+        goBackButton.click();
+
+        wait.until(ExpectedConditions.urlToBe(TARGET_ADDRESS + "/#/Landing"));
+        assertEquals(TARGET_ADDRESS + "/#/Landing", driver.getCurrentUrl());
     }
 
     @Test
@@ -63,9 +67,14 @@ public class SubmitReportsIT {
         WebElement submitButton = driver.findElement(By.id("submit-report"));
         submitButton.click();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("alert-info")));
-        WebElement alert = driver.findElement(By.className("alert-info"));
-        assertTrue(alert.getText().contains("Report submitted"));
+        WebElement header = driver.findElement(By.id("header"));
+        assertTrue(header.getText().contains("Submission Successful"));
+
+        WebElement goBackButton = driver.findElement(By.id("go-back-button"));
+        goBackButton.click();
+
+        wait.until(ExpectedConditions.urlToBe(TARGET_ADDRESS + "/#/Landing"));
+        assertEquals(TARGET_ADDRESS + "/#/Landing", driver.getCurrentUrl());
     }
 
     @Test

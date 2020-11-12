@@ -22,7 +22,7 @@ public class SubmitReportsIT {
     @BeforeAll
     public static void setUp() {
         driver = WebDriverHelper.getSharedDriver();
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, 4);
     }
 
     @Test
@@ -96,5 +96,53 @@ public class SubmitReportsIT {
 
         WebElement htmlError = driver.findElement(By.cssSelector("input:invalid"));
         assertTrue(htmlError.isDisplayed());
+    }
+
+    @Test
+    public void testCanSubmitHighStatusLocationReport() {
+        driver.get(TARGET_ADDRESS);
+        LoginHelper.ensureLoggedIn(driver);
+        driver.get(TARGET_ADDRESS + "/#/submit/location");
+
+        WebElement locationSelect = driver.findElement(By.id("location-select"));
+        new Select(locationSelect).selectByIndex(1);
+        WebElement statusInput = driver.findElement(By.id("status-input"));
+        statusInput.sendKeys("999");
+        WebElement reportTitleInput = driver.findElement(By.id("title-input"));
+        reportTitleInput.sendKeys("Test");
+        WebElement reportInput = driver.findElement(By.id("report-input"));
+        reportInput.sendKeys("Report");
+        WebElement submitButton = driver.findElement(By.id("submit-report"));
+        submitButton.click();
+
+        WebElement header = driver.findElement(By.id("header"));
+        assertTrue(header.getText().contains("Submission Successful"));
+    }
+
+    @Test
+    public void testCanRedirectAfterSubmitLocationReport() {
+        driver.get(TARGET_ADDRESS);
+        LoginHelper.ensureLoggedIn(driver);
+        driver.get(TARGET_ADDRESS + "/#/submit/location");
+
+        WebElement locationSelect = driver.findElement(By.id("location-select"));
+        new Select(locationSelect).selectByIndex(1);
+        WebElement statusInput = driver.findElement(By.id("status-input"));
+        statusInput.sendKeys("1");
+        WebElement reportTitleInput = driver.findElement(By.id("title-input"));
+        reportTitleInput.sendKeys("Test");
+        WebElement reportInput = driver.findElement(By.id("report-input"));
+        reportInput.sendKeys("Report");
+        WebElement submitButton = driver.findElement(By.id("submit-report"));
+        submitButton.click();
+
+        WebElement header = driver.findElement(By.id("header"));
+        assertTrue(header.getText().contains("Submission Successful"));
+
+        WebElement goBackButton = driver.findElement(By.id("go-back-button"));
+        goBackButton.click();
+
+        wait.until(ExpectedConditions.urlToBe(TARGET_ADDRESS + "/#/Landing"));
+        assertEquals(TARGET_ADDRESS + "/#/Landing", driver.getCurrentUrl());
     }
 }

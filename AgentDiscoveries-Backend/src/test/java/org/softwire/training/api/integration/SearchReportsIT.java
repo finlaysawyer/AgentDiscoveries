@@ -22,7 +22,7 @@ public class SearchReportsIT {
     @BeforeAll
     public static void setUp() {
         driver = WebDriverHelper.getSharedDriver();
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, 4);
     }
 
     @Test
@@ -36,9 +36,9 @@ public class SearchReportsIT {
         WebElement statusInput = driver.findElement(By.id("status-input"));
         statusInput.sendKeys("1");
         WebElement reportTitleInput = driver.findElement(By.id("title-input"));
-        reportTitleInput.sendKeys("test");
+        reportTitleInput.sendKeys("Test Report");
         WebElement reportInput = driver.findElement(By.id("report-input"));
-        reportInput.sendKeys("A test report");
+        reportInput.sendKeys("Report");
         WebElement submitButton = driver.findElement(By.id("submit-report"));
         submitButton.click();
 
@@ -48,7 +48,7 @@ public class SearchReportsIT {
         driver.get(TARGET_ADDRESS + "/#/search/location");
 
         WebElement reportTitle = driver.findElement(By.id("title-search"));
-        reportTitle.sendKeys("test");
+        reportTitle.sendKeys("Test");
         WebElement searchButton = driver.findElement(By.id("search-report"));
         searchButton.click();
 
@@ -57,7 +57,7 @@ public class SearchReportsIT {
         assertTrue(alert.getText().contains("result"));
     }
     @Test
-    public void testModalOpensandClosesforLocation() {
+    public void testModalOpensAndClosesForLocation() {
         driver.get(TARGET_ADDRESS);
         LoginHelper.ensureLoggedIn(driver);
         driver.get(TARGET_ADDRESS + "/#/submit/location");
@@ -67,9 +67,9 @@ public class SearchReportsIT {
         WebElement statusInput = driver.findElement(By.id("status-input"));
         statusInput.sendKeys("1");
         WebElement reportTitleInput = driver.findElement(By.id("title-input"));
-        reportTitleInput.sendKeys("Modal Test Location Report");
+        reportTitleInput.sendKeys("Modal Test");
         WebElement reportInput = driver.findElement(By.id("report-input"));
-        reportInput.sendKeys("A test report");
+        reportInput.sendKeys("Report");
         WebElement submitButton = driver.findElement(By.id("submit-report"));
         submitButton.click();
 
@@ -109,22 +109,36 @@ public class SearchReportsIT {
             WebElement locationSelect = driver.findElement(By.id("location-select"));
             new Select(locationSelect).selectByIndex(1);
             WebElement statusInput = driver.findElement(By.id("status-input"));
-            statusInput.sendKeys("963");
+            statusInput.sendKeys("1");
             WebElement reportTitleInput = driver.findElement(By.id("title-input"));
-            reportTitleInput.sendKeys("A test report title");
+            reportTitleInput.sendKeys("Test");
             WebElement reportInput = driver.findElement(By.id("report-input"));
-            reportInput.sendKeys("A test report over 100");
+            reportInput.sendKeys("Report");
             WebElement submitButton = driver.findElement(By.id("submit-report"));
             submitButton.click();
+
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("go-back-button")));
+            WebElement goBackButton = driver.findElement(By.id("go-back-button"));
+            goBackButton.click();
+
+            wait.until(ExpectedConditions.urlToBe(TARGET_ADDRESS + "/#/Landing"));
+            driver.get(TARGET_ADDRESS + "/#/submit/location");
         }
 
-        WebElement resultsHeader = driver.findElement(By.id("results-header"));
+        LoginHelper.logOut(driver);
+        wait.until(ExpectedConditions.urlToBe(TARGET_ADDRESS + "/#/login"));
+        LoginHelper.ensureLoggedInAsAdmin(driver);
+
+        wait.until(ExpectedConditions.urlToBe(TARGET_ADDRESS + "/#/Landing"));
+        driver.get(TARGET_ADDRESS + "/#/search/location");
+
+        WebElement resultsHeader = driver.findElement(By.id("results-length"));
         assertTrue(resultsHeader.getText().contains("results"));
 
         WebElement secondPage = driver.findElement(By.id("page2"));
         secondPage.click();
 
-        WebElement page2ResultsHeader = driver.findElement(By.id("results-header"));
+        WebElement page2ResultsHeader = driver.findElement(By.id("results-length"));
         assertTrue(page2ResultsHeader.getText().contains("results"));
     }
 }

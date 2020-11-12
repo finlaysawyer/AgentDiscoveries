@@ -1,8 +1,13 @@
 package org.softwire.training.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * A report to be sent to the external API
  */
+@Getter
+@Setter
 public class ExternalReport {
 
     private String callSign;
@@ -14,28 +19,5 @@ public class ExternalReport {
         this.reportBody = reportBody;
     }
 
-    public String getCallSign() {
-        return callSign;
-    }
-
-    public void setAgentId(String callSign) {
-        this.callSign = callSign;
-    }
-
-    public String getReportTitle() {
-        return reportTitle;
-    }
-
-    public void setReportTitle(String reportTitle) {
-        this.reportTitle=reportTitle;
-    }
-
-    public String getReportBody() {
-        return reportBody;
-    }
-
-    public void setReportBody(String reportBody) {
-        this.reportBody=reportBody;
-    }
 
 }

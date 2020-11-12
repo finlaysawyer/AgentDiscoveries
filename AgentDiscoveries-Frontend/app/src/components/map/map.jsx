@@ -31,7 +31,6 @@ export class MapContainer extends Component {
                 title={marker.siteName}
                 name={marker.location}
                 position={{lat:marker.latitude,lng:marker.longitude}}
-                key={marker.locationId}
             />
         );
     }
@@ -64,3 +63,4 @@ export class MapContainer extends Component {
 export default GoogleApiWrapper({
     apiKey: 'AIzaSyDTG0djiQQ_PDvbbSNawquHi7PVYD8LxSE'
 })(MapContainer);
+

@@ -1,8 +1,10 @@
 package org.softwire.training.api.models;
 
+import lombok.Getter;
+
 public class FailedRequestException extends RuntimeException {
 
-    private ErrorCode errorCode;
+    private @Getter ErrorCode errorCode;
 
     public FailedRequestException(ErrorCode errorCode, String message) {
         super(message);
@@ -12,9 +14,5 @@ public class FailedRequestException extends RuntimeException {
     public FailedRequestException(ErrorCode errorCode, String message, Throwable cause) {
         super(message, cause);
         this.errorCode = errorCode;
-    }
-
-    public ErrorCode getErrorCode() {
-        return errorCode;
     }
 }

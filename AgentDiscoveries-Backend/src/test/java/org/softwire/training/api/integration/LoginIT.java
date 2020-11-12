@@ -33,7 +33,7 @@ public class LoginIT {
     public void testCanLogIn() {
         driver.get(TARGET_ADDRESS);
         LoginHelper.ensureLoggedOut(driver);
-        LoginHelper.login(driver, "test_agent");
+        LoginHelper.login(driver, LoginHelper.TEST_AGENT);
 
         WebElement navBarRight = driver.findElement(By.className("navbar-right"));
         assertTrue(navBarRight.getText().contains("Log Out"));

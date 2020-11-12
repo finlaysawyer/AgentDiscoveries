@@ -28,7 +28,7 @@ export default class SearchResult extends React.Component {
             this.sliceArray(1);
 
             for (let index = 10; index <= Math.ceil(this.props.results.length / 10) * 10; index = index+10) {
-                paginationItems.push(<li key={index}><a onClick={() => this.sliceArray(index/10)}>{index/10}</a></li>);
+                paginationItems.push(<li id="page{index/10}" key={index}><a onClick={() => this.sliceArray(index/10)}>{index/10}</a></li>);
             }
 
             this.setState({paginationItems: paginationItems});

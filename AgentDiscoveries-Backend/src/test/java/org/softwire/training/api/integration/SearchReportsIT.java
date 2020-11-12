@@ -98,4 +98,33 @@ public class SearchReportsIT {
         WebElement alert = driver.findElement(By.id("results-length"));
         assertTrue(alert.getText().contains("result"));
     }
+
+    @Test
+    public void testPaginationSplitsResults() {
+        driver.get(TARGET_ADDRESS);
+        LoginHelper.ensureLoggedIn(driver);
+        driver.get(TARGET_ADDRESS + "/#/submit/location");
+
+        for (int i=0; i<11; i++) {
+            WebElement locationSelect = driver.findElement(By.id("location-select"));
+            new Select(locationSelect).selectByIndex(1);
+            WebElement statusInput = driver.findElement(By.id("status-input"));
+            statusInput.sendKeys("963");
+            WebElement reportTitleInput = driver.findElement(By.id("title-input"));
+            reportTitleInput.sendKeys("A test report title");
+            WebElement reportInput = driver.findElement(By.id("report-input"));
+            reportInput.sendKeys("A test report over 100");
+            WebElement submitButton = driver.findElement(By.id("submit-report"));
+            submitButton.click();
+        }
+
+        WebElement resultsHeader = driver.findElement(By.id("results-header"));
+        assertTrue(resultsHeader.getText().contains("results"));
+
+        WebElement secondPage = driver.findElement(By.id("page2"));
+        secondPage.click();
+
+        WebElement page2ResultsHeader = driver.findElement(By.id("results-header"));
+        assertTrue(page2ResultsHeader.getText().contains("results"));
+    }
 }

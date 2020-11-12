@@ -42,6 +42,7 @@ public class SubmitReportsIT {
         WebElement submitButton = driver.findElement(By.id("submit-report"));
         submitButton.click();
 
+        wait.until(ExpectedConditions.urlToBe(TARGET_ADDRESS + "/#/success-message"));
         WebElement header = driver.findElement(By.id("header"));
         assertTrue(header.getText().contains("Submission Successful"));
 
@@ -67,6 +68,7 @@ public class SubmitReportsIT {
         WebElement submitButton = driver.findElement(By.id("submit-report"));
         submitButton.click();
 
+        wait.until(ExpectedConditions.urlToBe(TARGET_ADDRESS + "/#/success-message"));
         WebElement header = driver.findElement(By.id("header"));
         assertTrue(header.getText().contains("Submission Successful"));
 

@@ -4,11 +4,11 @@ import {apiGet} from '../utilities/request-helper';
 import {errorLogAndRedirect} from '../error';
 
 export default class SearchResult extends React.Component {
-    constructor(props) {
+constructor(props) {
         super(props);
         this.state = {
-        
-        }
+            results: []
+        };
     }
 
     sliceArray(x) {
@@ -16,25 +16,26 @@ export default class SearchResult extends React.Component {
         var minResults = maxResults - 10;
 
         var items = this.props.results.slice(minResults, maxResults);
-        this.setState({resultsHeader: this.getResultsHeader(items)});
-        this.setState({results: this.renderResults(items)});
+        this.setState({results: items});
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.results !== this.props.results) {
+            this.sliceArray(1)
+        }
     }
 
     pagination() {
         return ( 
             <div>
                 <nav>
-                    <ul class="pagination justify-content-left">
+                    <ul className="pagination justify-content-left">
                         <li><a onClick={() => this.sliceArray(1)}>Previous</a></li>
                         <li><a onClick={() => this.sliceArray(1)}>1</a></li>
                         <li><a onClick={() => this.sliceArray(2)}>2</a></li>
                         <li><a onClick={() => this.sliceArray(3)}>3</a></li>
                         <li><a onClick={() => this.sliceArray(1)}>Next</a></li>
                     </ul>
-                    <div>
-                        {this.state.resultsHeader}
-                        {this.state.results}
-                    </div>
                 </nav>
             </div>
         );
@@ -44,14 +45,13 @@ export default class SearchResult extends React.Component {
         return(
             <div>
                 {this.pagination()}
-                {this.getResultsHeader(this.props.results)}
-                {this.renderResults(this.props.results)}
+                {this.getResultsHeader(this.state.results)}
+                {this.renderResults(this.state.results)}
             </div>
         );
     }
 
     renderResults(results) {
-        
         return results.map((result, index) => {
             return (
                 <Panel id="resultsBox" key={index}>

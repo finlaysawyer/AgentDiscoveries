@@ -144,5 +144,8 @@ export default class LocationReportsSearch extends React.Component {
         apiGet(url)
             .then(results => this.setState({ results: results, message: {} }))
             .catch(error => this.setState({ message: { message: error.message, type: 'danger' } }));
+
+        
+    
     }
 }

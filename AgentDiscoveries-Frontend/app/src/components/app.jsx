@@ -18,6 +18,7 @@ import TodaysCodePage from './todays-code-page';
 import LocationForm from './admin/location-form';
 import RegionForm from './admin/region-form';
 import UserForm from './admin/user-form';
+import Summary from './summary';
 import Error from './error';
 
 export default class App extends React.Component {
@@ -38,6 +39,7 @@ export default class App extends React.Component {
                         <Route path='/admin/regions' exact render={() => <Page><Entities api='regions' key='regions'/></Page>} />
                         <Route path='/admin/users' exact render={() => <Page><Entities api='users' key='users'/></Page>} />
 
+                        <Route path='/summary' render={() => <Page><Summary /></Page>} />
 
                         <Route path='/admin/locations/add' render={() => <Page><LocationForm/></Page>} />
                         <Route path='/admin/regions/add' render={() => <Page><RegionForm/></Page>} />

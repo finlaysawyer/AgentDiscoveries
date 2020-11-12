@@ -116,6 +116,9 @@ export default class NavigationBar extends React.Component {
                         Region Summaries
                     </MenuItem>
                 </NavDropdown>
+                <NavItem componentClass={Link} href='/summary' to='/summary' eventKey={5}>
+                    Executive Summary
+                </NavItem>
             </Nav>
         );
     }

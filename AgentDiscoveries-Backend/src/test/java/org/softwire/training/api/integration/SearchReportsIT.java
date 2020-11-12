@@ -52,7 +52,7 @@ public class SearchReportsIT {
         WebElement searchButton = driver.findElement(By.id("search-report"));
         searchButton.click();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("resultsBox")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("results-box")));
         WebElement alert = driver.findElement(By.id("results-length"));
         assertTrue(alert.getText().contains("result"));
     }
@@ -83,18 +83,18 @@ public class SearchReportsIT {
         WebElement searchButton = driver.findElement(By.id("search-report"));
         searchButton.click();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("BodyID")));
-        WebElement searchModalOpen = driver.findElement(By.id("OpenModal"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("body-id")));
+        WebElement searchModalOpen = driver.findElement(By.id("open-modal"));
         searchModalOpen.click();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ModalHeader")));
-        WebElement ModalHeader = driver.findElement(By.id("ModalHeader"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("modal-header")));
+        WebElement ModalHeader = driver.findElement(By.id("modal-header"));
         assertTrue(ModalHeader.getText().contains("Modal Test Location Report"));
 
-        WebElement searchModalClose = driver.findElement(By.id("CloseModal"));
+        WebElement searchModalClose = driver.findElement(By.id("close-modal"));
         searchModalClose.click();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("resultsBox")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("results-box")));
         WebElement alert = driver.findElement(By.id("results-length"));
         assertTrue(alert.getText().contains("result"));
     }

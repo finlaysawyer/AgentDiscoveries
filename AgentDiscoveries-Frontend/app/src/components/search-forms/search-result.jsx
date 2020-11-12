@@ -64,17 +64,17 @@ export default class SearchResult extends React.Component {
     renderResults(results) {
         return results.map((result, index) => {
             return (
-                <Panel id="resultsBox" key={index}>
-                    <Panel.Heading id = "results">Result</Panel.Heading>
-                    <Panel.Body id = "BodyID">
+                <Panel id="results-box" key={index}>
+                    <Panel.Heading id="results">Result</Panel.Heading>
+                    <Panel.Body id="body-id">
                         {this.renderResultBody(result)}
                         <Button bsStyle="success" type="button" onClick={() => this.generatePdf(result.reportId)}>Export to PDF</Button>&nbsp;&nbsp;
-                        <Button id = "OpenModal" bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>View More</Button>
+                        <Button id="open-modal" bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>View More</Button>
                         <Modal show={this.state[result.reportId]}>
-                            <Modal.Header id = "ModalHeader">{result.reportTitle ? result.reportTitle : 'Region ID: ' + result.regionId}</Modal.Header>
+                            <Modal.Header id="modal-header">{result.reportTitle ? result.reportTitle : 'Region ID: ' + result.regionId}</Modal.Header>
                             <Modal.Body>{result.reportBody}</Modal.Body>
                             <Modal.Footer>
-                                <Button id= "CloseModal" bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>
+                                <Button id="close-modal" bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>
                                     Close modal
                                 </Button>
                             </Modal.Footer>

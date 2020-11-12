@@ -4,7 +4,7 @@ import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import Login from './user/login';
 import Home from './home';
 import Page from './page';
-import PageFlex from './page-flex'
+import PageFlex from './page-flex';
 import Profile from './profile/profile';
 import EditProfilePicture from './profile/edit-profile-picture';
 import EditProfileCallSign from './profile/edit-profile-callsign';

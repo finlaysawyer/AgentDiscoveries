@@ -65,16 +65,16 @@ export default class SearchResult extends React.Component {
         return results.map((result, index) => {
             return (
                 <Panel id="resultsBox" key={index}>
-                    <Panel.Heading>Result</Panel.Heading>
-                    <Panel.Body>
+                    <Panel.Heading id = "results">Result</Panel.Heading>
+                    <Panel.Body id = "BodyID">
                         {this.renderResultBody(result)}
                         <Button bsStyle="success" type="button" onClick={() => this.generatePdf(result.reportId)}>Export to PDF</Button>&nbsp;&nbsp;
-                        <Button bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>View More</Button>
+                        <Button id = "OpenModal" bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>View More</Button>
                         <Modal show={this.state[result.reportId]}>
-                            <Modal.Header>{result.reportTitle ? result.reportTitle : 'Region ID: ' + result.regionId}</Modal.Header>
+                            <Modal.Header id = "ModalHeader">{result.reportTitle ? result.reportTitle : 'Region ID: ' + result.regionId}</Modal.Header>
                             <Modal.Body>{result.reportBody}</Modal.Body>
                             <Modal.Footer>
-                                <Button bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>
+                                <Button id= "CloseModal" bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>
                                     Close modal
                                 </Button>
                             </Modal.Footer>

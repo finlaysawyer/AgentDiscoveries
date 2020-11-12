@@ -56,4 +56,46 @@ public class SearchReportsIT {
         WebElement alert = driver.findElement(By.id("results-length"));
         assertTrue(alert.getText().contains("result"));
     }
+    @Test
+    public void testModalOpensandClosesforLocation() {
+        driver.get(TARGET_ADDRESS);
+        LoginHelper.ensureLoggedIn(driver);
+        driver.get(TARGET_ADDRESS + "/#/submit/location");
+
+        WebElement locationSelect = driver.findElement(By.id("location-select"));
+        new Select(locationSelect).selectByIndex(1);
+        WebElement statusInput = driver.findElement(By.id("status-input"));
+        statusInput.sendKeys("1");
+        WebElement reportTitleInput = driver.findElement(By.id("title-input"));
+        reportTitleInput.sendKeys("Modal Test Location Report");
+        WebElement reportInput = driver.findElement(By.id("report-input"));
+        reportInput.sendKeys("A test report");
+        WebElement submitButton = driver.findElement(By.id("submit-report"));
+        submitButton.click();
+
+        LoginHelper.logOut(driver);
+        LoginHelper.ensureLoggedInAsAdmin(driver);
+
+        driver.get(TARGET_ADDRESS + "/#/search/location");
+
+        WebElement reportTitle = driver.findElement(By.id("title-search"));
+        reportTitle.sendKeys("Modal Test Location Report");
+        WebElement searchButton = driver.findElement(By.id("search-report"));
+        searchButton.click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("BodyID")));
+        WebElement searchModalOpen = driver.findElement(By.id("OpenModal"));
+        searchModalOpen.click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ModalHeader")));
+        WebElement ModalHeader = driver.findElement(By.id("ModalHeader"));
+        assertTrue(ModalHeader.getText().contains("Modal Test Location Report"));
+
+        WebElement searchModalClose = driver.findElement(By.id("CloseModal"));
+        searchModalClose.click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("resultsBox")));
+        WebElement alert = driver.findElement(By.id("results-length"));
+        assertTrue(alert.getText().contains("result"));
+    }
 }

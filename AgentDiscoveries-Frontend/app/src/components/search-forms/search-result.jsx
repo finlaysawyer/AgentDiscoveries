@@ -4,7 +4,7 @@ import {apiGet} from '../utilities/request-helper';
 import {errorLogAndRedirect} from '../error';
 
 export default class SearchResult extends React.Component {
-constructor(props) {
+    constructor(props) {
         super(props);
         this.state = {
             results: [],
@@ -28,7 +28,7 @@ constructor(props) {
             this.sliceArray(1);
 
             for (let index = 10; index <= Math.ceil(this.props.results.length / 10) * 10; index = index+10) {
-                paginationItems.push(<li key={index}><a onClick={() => this.sliceArray(index/10)}>{index/10}</a></li>)
+                paginationItems.push(<li key={index}><a onClick={() => this.sliceArray(index/10)}>{index/10}</a></li>);
             }
 
             this.setState({paginationItems: paginationItems});
@@ -97,7 +97,7 @@ constructor(props) {
             let text = result[key];
 
             if (text.length > 100) {
-                text = text.toString().substring(0, 135) + "..."
+                text = text.toString().substring(0, 135) + '...';
             }
 
             return <p key={key} id={key}>{`${key}: ${text}`}</p>;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Button, Panel} from 'react-bootstrap';
+import {Button, Panel, Modal} from 'react-bootstrap';
 import {apiGet} from '../utilities/request-helper';
 import {errorLogAndRedirect} from '../error';
 
@@ -8,7 +8,8 @@ constructor(props) {
         super(props);
         this.state = {
             results: [],
-            paginationItems: []
+            paginationItems: [],
+            show: false
         };
     }
 
@@ -46,6 +47,10 @@ constructor(props) {
         );
     }
 
+    handleModal(reportId) {
+        this.setState({[reportId]: !this.state[reportId]});
+    }
+
     render() {
         return(
             <div>
@@ -63,7 +68,17 @@ constructor(props) {
                     <Panel.Heading>Result</Panel.Heading>
                     <Panel.Body>
                         {this.renderResultBody(result)}
-                        <Button bsStyle="success" type="button" onClick={() => this.generatePdf(result[Object.keys(result)[0]])}>Export to PDF</Button>
+                        <Button bsStyle="success" type="button" onClick={() => this.generatePdf(result.reportId)}>Export to PDF</Button>&nbsp;&nbsp;
+                        <Button bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>View More</Button>
+                        <Modal show={this.state[result.reportId]}>
+                            <Modal.Header>{result.reportTitle ? result.reportTitle : 'Region ID: ' + result.regionId}</Modal.Header>
+                            <Modal.Body>{result.reportBody}</Modal.Body>
+                            <Modal.Footer>
+                                <Button bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>
+                                    Close modal
+                                </Button>
+                            </Modal.Footer>
+                        </Modal>
                     </Panel.Body>
                 </Panel>
             );

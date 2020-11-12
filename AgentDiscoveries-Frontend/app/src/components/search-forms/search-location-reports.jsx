@@ -10,6 +10,14 @@ export default class LocationReportsSearch extends React.Component {
     constructor(props) {
         super(props);
 
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var twoWeeks = today - 12096e5;
+        
+        today = yyyy + '/' + mm + '/' + dd;
+
         this.state = {
             locations: [],
             agents: [],
@@ -17,8 +25,8 @@ export default class LocationReportsSearch extends React.Component {
             callSign: '',
             locationId: '',
             reportTitle: '',
-            fromTime: '',
-            toTime: '',
+            fromTime: twoWeeks,
+            toTime: today,
 
             results: [],
             message: {}
@@ -39,6 +47,10 @@ export default class LocationReportsSearch extends React.Component {
         apiGet('agents')
             .then(results => this.setState({ agents: results }))
             .catch(() => this.addMessage('Error fetching agents, please try again later', 'danger'));
+    
+        apiGet('reports/locationstatuses')
+            .then(results => this.setState({ results: results, message: {} }))
+            .catch(error => this.setState({ message: { message: error.message, type: 'danger' } }));
     }
 
     render() {

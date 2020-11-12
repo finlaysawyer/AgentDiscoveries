@@ -4,6 +4,7 @@ import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import Login from './user/login';
 import Home from './home';
 import Page from './page';
+import PageFlex from './page-flex';
 import Profile from './profile/profile';
 import EditProfilePicture from './profile/edit-profile-picture';
 import EditProfileCallSign from './profile/edit-profile-callsign';
@@ -48,7 +49,7 @@ export default class App extends React.Component {
                         <Route path='/admin/users/edit/:id' render={props => <Page><UserForm id={props.match.params.id} /></Page>} />
 
                         <Route path='/message' render={() => <Page><TodaysCodePage /></Page>} />
-                        <Route path='/landing' render={() => <Page><Landing /></Page>} />
+                        <Route path='/landing' render={() => <PageFlex><Landing /></PageFlex>} />
                         <Route path='/profile' exact render={() => <Page><Profile /></Page>} />
                         <Route path='/profile/edit/callsign' render={() => <Page><EditProfileCallSign /></Page>} />
                         <Route path='/profile/edit/picture' render={() => <Page><EditProfilePicture /></Page>} />

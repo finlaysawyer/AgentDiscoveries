@@ -1,5 +1,7 @@
 package org.softwire.training.db.daos;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.softwire.training.models.User;
 
 import javax.inject.Inject;
@@ -10,6 +12,7 @@ import java.util.Optional;
 
 public class UsersDao {
 
+    private static final Logger logger = LoggerFactory.getLogger("org.software.training.db");
     private EntityManagerFactory entityManagerFactory;
     private DaoHelper<User> helper;
 
@@ -45,6 +48,7 @@ public class UsersDao {
 
     public int addUser(User user) {
         helper.createEntity(user);
+        logger.info("User created: " + user.toString());
         return user.getUserId();
     }
 

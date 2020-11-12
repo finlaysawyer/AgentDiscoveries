@@ -1,9 +1,12 @@
 package org.softwire.training.models;
 
+import lombok.ToString;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+@ToString(callSuper = true)
 @Entity
 @Table(name = "location_reports")
 public class LocationStatusReport extends ReportBase {

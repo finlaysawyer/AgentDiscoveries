@@ -28,7 +28,7 @@ export default class SearchResult extends React.Component {
             this.sliceArray(1);
 
             for (let index = 10; index <= Math.ceil(this.props.results.length / 10) * 10; index = index+10) {
-                paginationItems.push(<li key={index}><a onClick={() => this.sliceArray(index/10)}>{index/10}</a></li>);
+                paginationItems.push(<li id="page{index/10}" key={index}><a onClick={() => this.sliceArray(index/10)}>{index/10}</a></li>);
             }
 
             this.setState({paginationItems: paginationItems});
@@ -64,17 +64,17 @@ export default class SearchResult extends React.Component {
     renderResults(results) {
         return results.map((result, index) => {
             return (
-                <Panel id="resultsBox" key={index}>
-                    <Panel.Heading>Result</Panel.Heading>
-                    <Panel.Body>
+                <Panel id="results-box" key={index}>
+                    <Panel.Heading id="results">Result</Panel.Heading>
+                    <Panel.Body id="body-id">
                         {this.renderResultBody(result)}
                         <Button bsStyle="success" type="button" onClick={() => this.generatePdf(result.reportId)}>Export to PDF</Button>&nbsp;&nbsp;
-                        <Button bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>View More</Button>
+                        <Button id="open-modal" bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>View More</Button>
                         <Modal show={this.state[result.reportId]}>
-                            <Modal.Header>{result.reportTitle ? result.reportTitle : 'Region ID: ' + result.regionId}</Modal.Header>
+                            <Modal.Header id="modal-header">{result.reportTitle ? result.reportTitle : 'Region ID: ' + result.regionId}</Modal.Header>
                             <Modal.Body>{result.reportBody}</Modal.Body>
                             <Modal.Footer>
-                                <Button bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>
+                                <Button id="close-modal" bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>
                                     Close modal
                                 </Button>
                             </Modal.Footer>

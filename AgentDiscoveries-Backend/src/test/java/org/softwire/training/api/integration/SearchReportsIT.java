@@ -52,8 +52,79 @@ public class SearchReportsIT {
         WebElement searchButton = driver.findElement(By.id("search-report"));
         searchButton.click();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("resultsBox")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("results-box")));
         WebElement alert = driver.findElement(By.id("results-length"));
         assertTrue(alert.getText().contains("result"));
+    }
+    @Test
+    public void testModalOpensandClosesforLocation() {
+        driver.get(TARGET_ADDRESS);
+        LoginHelper.ensureLoggedIn(driver);
+        driver.get(TARGET_ADDRESS + "/#/submit/location");
+
+        WebElement locationSelect = driver.findElement(By.id("location-select"));
+        new Select(locationSelect).selectByIndex(1);
+        WebElement statusInput = driver.findElement(By.id("status-input"));
+        statusInput.sendKeys("1");
+        WebElement reportTitleInput = driver.findElement(By.id("title-input"));
+        reportTitleInput.sendKeys("Modal Test Location Report");
+        WebElement reportInput = driver.findElement(By.id("report-input"));
+        reportInput.sendKeys("A test report");
+        WebElement submitButton = driver.findElement(By.id("submit-report"));
+        submitButton.click();
+
+        LoginHelper.logOut(driver);
+        LoginHelper.ensureLoggedInAsAdmin(driver);
+
+        driver.get(TARGET_ADDRESS + "/#/search/location");
+
+        WebElement reportTitle = driver.findElement(By.id("title-search"));
+        reportTitle.sendKeys("Modal Test Location Report");
+        WebElement searchButton = driver.findElement(By.id("search-report"));
+        searchButton.click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("body-id")));
+        WebElement searchModalOpen = driver.findElement(By.id("open-modal"));
+        searchModalOpen.click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("modal-header")));
+        WebElement ModalHeader = driver.findElement(By.id("modal-header"));
+        assertTrue(ModalHeader.getText().contains("Modal Test Location Report"));
+
+        WebElement searchModalClose = driver.findElement(By.id("close-modal"));
+        searchModalClose.click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("results-box")));
+        WebElement alert = driver.findElement(By.id("results-length"));
+        assertTrue(alert.getText().contains("result"));
+    }
+
+    @Test
+    public void testPaginationSplitsResults() {
+        driver.get(TARGET_ADDRESS);
+        LoginHelper.ensureLoggedIn(driver);
+        driver.get(TARGET_ADDRESS + "/#/submit/location");
+
+        for (int i=0; i<11; i++) {
+            WebElement locationSelect = driver.findElement(By.id("location-select"));
+            new Select(locationSelect).selectByIndex(1);
+            WebElement statusInput = driver.findElement(By.id("status-input"));
+            statusInput.sendKeys("963");
+            WebElement reportTitleInput = driver.findElement(By.id("title-input"));
+            reportTitleInput.sendKeys("A test report title");
+            WebElement reportInput = driver.findElement(By.id("report-input"));
+            reportInput.sendKeys("A test report over 100");
+            WebElement submitButton = driver.findElement(By.id("submit-report"));
+            submitButton.click();
+        }
+
+        WebElement resultsHeader = driver.findElement(By.id("results-header"));
+        assertTrue(resultsHeader.getText().contains("results"));
+
+        WebElement secondPage = driver.findElement(By.id("page2"));
+        secondPage.click();
+
+        WebElement page2ResultsHeader = driver.findElement(By.id("results-header"));
+        assertTrue(page2ResultsHeader.getText().contains("results"));
     }
 }

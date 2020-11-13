@@ -63,25 +63,47 @@ export default class SearchResult extends React.Component {
 
     renderResults(results) {
         return results.map((result, index) => {
-            return (
-                <Panel id="results-box" key={index}>
-                    <Panel.Heading id="results">Result</Panel.Heading>
-                    <Panel.Body id="body-id">
-                        {this.renderResultBody(result)}
-                        <Button bsStyle="success" type="button" onClick={() => this.generatePdf(result.reportId)}>Export to PDF</Button>&nbsp;&nbsp;
-                        <Button id="open-modal" bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>View More</Button>
-                        <Modal show={this.state[result.reportId]}>
-                            <Modal.Header id="modal-header">{result.reportTitle ? result.reportTitle : 'Region ID: ' + result.regionId}</Modal.Header>
-                            <Modal.Body>{result.reportBody}</Modal.Body>
-                            <Modal.Footer>
-                                <Button id="close-modal" bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>
-                                    Close modal
-                                </Button>
-                            </Modal.Footer>
-                        </Modal>
-                    </Panel.Body>
-                </Panel>
-            );
+            if (result.reportTitle == undefined) {
+                return ( //Region Report
+                    <Panel id="results-box" key={index}>
+                        <Panel.Heading id="results">Result</Panel.Heading>
+                        <Panel.Body id="body-id">
+                            {this.renderResultBody(result)}
+                            <Button bsStyle="success" type="button" onClick={() => this.generatePdf(result.reportId)}>Export to PDF</Button>&nbsp;&nbsp;
+                            <Button id="open-modal" bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>View More</Button>
+                            <Modal show={this.state[result.reportId]}>
+                                <Modal.Header id="modal-header">{result.reportTitle ? result.reportTitle : 'Region ID: ' + result.regionId}</Modal.Header>
+                                <Modal.Body>{result.reportBody}<br/><br/>Report ID: {result.regionId}<br/>Status: {result.status}<br/>Report Time: {result.reportTime}<br/>Agent ID: {result.agentId}</Modal.Body>
+                                <Modal.Footer>
+                                    <Button id="close-modal" bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>
+                                        Close modal
+                                    </Button>
+                                </Modal.Footer>
+                            </Modal>
+                        </Panel.Body>
+                    </Panel>
+                );
+            } else {
+                return ( //Location Report
+                    <Panel id="results-box" key={index}>
+                        <Panel.Heading id="results">Result</Panel.Heading>
+                        <Panel.Body id="body-id">
+                            {this.renderResultBody(result)}
+                            <Button bsStyle="success" type="button" onClick={() => this.generatePdf(result.reportId)}>Export to PDF</Button>&nbsp;&nbsp;
+                            <Button id="open-modal" bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>View More</Button>
+                            <Modal show={this.state[result.reportId]}>
+                                <Modal.Header id="modal-header">{result.reportTitle ? result.reportTitle : 'Region ID: ' + result.regionId}</Modal.Header>
+                                <Modal.Body>{result.reportBody}<br/><br/>Location ID: {result.locationId}<br/>Report ID: {result.reportId}<br/>Status: {result.status}<br/>Report Time: {result.reportTime}<br/>Agent ID: {result.agentId}</Modal.Body>
+                                <Modal.Footer>
+                                    <Button id="close-modal" bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>
+                                        Close modal
+                                    </Button>
+                                </Modal.Footer>
+                            </Modal>
+                        </Panel.Body>
+                    </Panel>
+                );
+            }
         });
     }
 

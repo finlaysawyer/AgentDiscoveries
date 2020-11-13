@@ -59,7 +59,7 @@ public class RegionSummaryReportsDao implements ReportsDao<RegionSummaryReport> 
 
         List<RegionSummaryReport> results = query.getResultList();
 
-        logger.info("Report search retrieved the following: \n" + StringUtils.join(results, ", \n"));
+        logger.info("Report search retrieved " + results.size() + " results");
 
         em.getTransaction().commit();
         em.close();

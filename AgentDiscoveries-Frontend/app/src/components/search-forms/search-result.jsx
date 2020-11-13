@@ -72,7 +72,7 @@ export default class SearchResult extends React.Component {
                         <Button id="open-modal" bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>View More</Button>
                         <Modal show={this.state[result.reportId]}>
                             <Modal.Header id="modal-header">{result.reportTitle ? result.reportTitle : 'Region ID: ' + result.regionId}</Modal.Header>
-                            <Modal.Body>{result.reportBody}</Modal.Body>
+                            <Modal.Body>{result.reportBody}<br/><br/> Status : {result.status}<br/> Report Time : {result.reportTime}<br/>Agent ID : {result.agentId}</Modal.Body>
                             <Modal.Footer>
                                 <Button id="close-modal" bsStyle="success" type="button" onClick={() => this.handleModal(result.reportId)}>
                                     Close modal

@@ -1,5 +1,7 @@
 package org.softwire.training.models;
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -8,6 +10,7 @@ import java.time.LocalDate;
 @ToString
 @Entity
 @Table(name = "agents")
+
 public class Agent {
 
     private int agentId;

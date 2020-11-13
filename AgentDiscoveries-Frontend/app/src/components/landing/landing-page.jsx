@@ -47,7 +47,7 @@ export class Landing extends React.Component {
                 <Map google={this.props.google}
                     zoom={5}
                     style={{
-                        height: '70%',
+                        height: '70%'
                     }}
                     initialCenter={{
                         lat: 52.520008,

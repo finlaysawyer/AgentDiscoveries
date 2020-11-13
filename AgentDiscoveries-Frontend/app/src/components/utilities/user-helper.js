@@ -9,7 +9,11 @@ export function storeUserInfo(userInfo) {
 }
 
 export function storeUserName(userName) {
-    window.localStorage.setItem('UserName',userName);
+    window.localStorage.setItem('UserName', userName);
+}
+
+export function storeAgent(isAdmin) {
+    window.localStorage.setItem('Agent', isAdmin);
 }
 
 export function getUserName(){
@@ -39,6 +43,10 @@ export function currentAuthToken() {
 
 export function isAdmin(){
     return window.localStorage.getItem('Admin') === 'true';
+}
+
+export function isAgent(){
+    return window.localStorage.getItem('Agent') === 'true';
 }
 
 // Fire a 'login' event when the user info is updated.

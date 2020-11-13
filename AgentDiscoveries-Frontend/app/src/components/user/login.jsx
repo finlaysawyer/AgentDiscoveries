@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {Button, Form, FormControl, FormGroup} from 'react-bootstrap';
 import Message from '../message';
+import {apiGet} from '../utilities/request-helper';
 import * as UserHelper from '../utilities/user-helper';
 
 export default class Login extends React.Component {
@@ -83,10 +84,23 @@ export default class Login extends React.Component {
             .then(response => {
                 UserHelper.storeUserName(this.state.username);
                 UserHelper.storeUserInfo(response);
-                window.location.hash = '#/';
+                this.setAgent();
             })
             .catch(error => {
                 this.setState({ message: { message: error.message, type: 'danger' } });
+            });
+    }
+
+    setAgent() {
+        apiGet('users', UserHelper.currentUserId())
+            .then(user => {
+                if (user.agentId) {
+                    UserHelper.storeAgent('true');
+                    return window.location.hash = '#/';
+                } else {
+                    UserHelper.storeAgent('false');
+                    return window.location.hash = '#/';
+                }
             });
     }
 }

@@ -11,13 +11,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * Helper for logging in to the application
  */
 public class LoginHelper {
-    private static final String TEST_AGENT = "test_agent";
-    private static final String TEST_ADMIN = "test_admin";
+    public static final String TEST_AGENT = "test_agent";
+    public static final String TEST_ADMIN = "test_admin";
     private static final String TEST_PASSWORD = "password";
+
 
     public static void ensureLoggedIn(WebDriver driver) {
         try {
-            driver.findElement(By.id("logout-link"));
+            driver.findElement(By.id("submit-link"));
         } catch (NoSuchElementException e) {
             login(driver, TEST_AGENT);
         }
@@ -25,13 +26,15 @@ public class LoginHelper {
 
     public static void ensureLoggedInAsAdmin(WebDriver driver) {
         try {
-            driver.findElement(By.id("logout-link"));
+            driver.findElement(By.id("agent-link"));
         } catch (NoSuchElementException e) {
             login(driver, TEST_ADMIN);
         }
     }
 
     public static void login(WebDriver driver, String userType) {
+        ensureLoggedOut(driver);
+
         WebElement userNameInput = driver.findElement(By.id("user-name-input"));
         userNameInput.sendKeys(userType);
 
@@ -41,7 +44,7 @@ public class LoginHelper {
         WebElement submitButton = driver.findElement(By.id("login-submit"));
         submitButton.submit();
 
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.stalenessOf(submitButton));
     }
 

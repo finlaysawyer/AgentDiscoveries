@@ -1,5 +1,8 @@
 package org.softwire.training.api.models;
 
+import lombok.Getter;
+
+@Getter
 public class TokenResponseApiModel {
 
     private String token;
@@ -14,15 +17,4 @@ public class TokenResponseApiModel {
         this.isAdmin=isAdmin;
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public String getExpires() {
-        return expires;
-    }
-
-    public int getUserId(){return userId;}
-
-    public boolean getIsAdmin(){return isAdmin;}
 }

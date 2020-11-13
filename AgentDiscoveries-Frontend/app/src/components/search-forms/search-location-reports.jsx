@@ -16,7 +16,7 @@ export default class LocationReportsSearch extends React.Component {
         var yyyy = today.getFullYear();
         var twoWeeks = today - 12096e5;
         
-        today = yyyy + '/' + mm + '/' + dd;
+        today = yyyy + '/' + mm + '/' + dd + ' ';
 
         this.state = {
             locations: [],
@@ -47,7 +47,6 @@ export default class LocationReportsSearch extends React.Component {
         apiGet('agents')
             .then(results => this.setState({ agents: results }))
             .catch(() => this.addMessage('Error fetching agents, please try again later', 'danger'));
-    
         apiGet('reports/locationstatuses')
             .then(results => this.setState({ results: results, message: {} }))
             .catch(error => this.setState({ message: { message: error.message, type: 'danger' } }));
@@ -144,8 +143,5 @@ export default class LocationReportsSearch extends React.Component {
         apiGet(url)
             .then(results => this.setState({ results: results, message: {} }))
             .catch(error => this.setState({ message: { message: error.message, type: 'danger' } }));
-
-        
-    
     }
 }

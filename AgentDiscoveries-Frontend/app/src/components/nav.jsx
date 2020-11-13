@@ -80,7 +80,7 @@ export default class NavigationBar extends React.Component {
     renderAgentOptions() {
         return (
             <Nav>
-                <NavDropdown eventKey={4} title='Submit' id='basic-nav-dropdown'>
+                <NavDropdown eventKey={4} title='Submit' id='submit-link'>
                     <MenuItem componentClass={Link} href='/submit/location' to='/submit/location' eventKey={4.1}>
                         Location Report
                     </MenuItem>
@@ -95,7 +95,7 @@ export default class NavigationBar extends React.Component {
     renderAdminOptions() {
         return (
             <Nav>
-                <NavDropdown eventKey={2} title='Admin' id='basic-nav-dropdown'>
+                <NavDropdown eventKey={2} title='Admin' id='admin-link'>
                     <MenuItem componentClass={Link} href='/admin/locations' to='/admin/locations' eventKey={2.1}>
                         Locations
                     </MenuItem>

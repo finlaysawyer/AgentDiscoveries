@@ -16,7 +16,7 @@ export default class RegionSummariesSearch extends React.Component {
         var yyyy = today.getFullYear();
         var twoWeeks = today - 12096e5;
         
-        today = yyyy + '/' + mm + '/' + dd;
+        today = yyyy + '/' + mm + '/' + dd + ' ';
 
         this.state = {
             regions: [],
